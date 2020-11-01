@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+    <link rel = "stylesheet" href="main.css">
+
+    <script src="google-blockly-31ee4ea/blockly_compressed.js"></script>
+    <script src="google-blockly-31ee4ea/blocks_compressed.js"></script>
+    <script src ="google-blockly-31ee4ea/msg/js/en.js"></script>
+    <script src="google-blockly-31ee4ea/python_compressed.js"></script>
+
+    <script src="google-blockly-31ee4ea/generators/python/motors.js"></script>
+    <script src="google-blockly-31ee4ea/generators/python/sensors.js"></script>
+
+    <script src="google-blockly-31ee4ea/generators/python/variables2.js"></script>
+    <script src="google-blockly-31ee4ea/generators/python/other.js"></script>
+    <script src="google-blockly-31ee4ea/blocks/motors.js"></script>
+    <script src="google-blockly-31ee4ea/blocks/sensors.js"></script>
+    <script src="google-blockly-31ee4ea/blocks/variables2.js"></script>
+    <script src="google-blockly-31ee4ea/blocks/other.js"></script>
+    <script src="main.js"></script>
+    <head>
+        <div>
+        <h1 style = "display: inline-block">
+            Blockly
+        </h1>
+        <button id = "submit" onclick="convertCode()">Submit</button>
+        <button id = "save" onclick="saveBlocks()">Save</button>
+        <button id = "restore" onclick="restore()">Restore</button>
+        </div>
+    </head>
+    <body>
+
+        <xml id="toolbox" style="display: none">
+        <category name="Control" colour=5>
+        <block type="controls_if"></block>
+        <block type="controls_repeat_ext"></block>
+        <block type="logic_compare"></block>
+        <block type="math_number"></block>
+        <block type="math_arithmetic"></block>
+        <block type="text"></block>
+        <block type="text_print"></block>
+        <block type="controls_whileUntil"></block> 
+        </category>
+        <!--<category name="Motors" colour="%{BKY_PROCEDURES_HUE}"
+        <block type="motors_setupmotor"></block>
+        <block type="motors_setspeed"></block>
+        <block type="motors_resetencoders"></block>
+        <block type="motors_getencoders"></block>
+        <block type="start"></block>
+        <block type="time_delay"></block>-->
+        <!-- </category> -->
+      <category name="Variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
+      <category name="Motors" colour=20>
+      <block type="motors_setupmotor"></block>
+      <block type="motors_setspeed"></block>
+      <block type="motors_resetencoders"></block>
+      <block type="motors_getencoders"></block>
+    </category>
+    <category name="Time" colour=90>
+      <block type="time_delay"></block>
+      <block type="time_gettime"></block>
+      <block type="time_resettime"></block>
+    </category>
+    <category name="Sensors" colour="#C4C443">
+      <block type="sensors_initializegyro"></block>
+      <block type="sensors_initializegps"></block>
+      <block type="sensors_initializesensor"></block>
+      <block type="sensors_getgyrovals"></block>
+      <block type="sensors_getgpsvals"></block>
+      <block type="sensors_getdistvals"></block>
+      <block type="sensors_getlightvals"></block>
+    </category>
+    <category name="Other" colour="#8B1723">
+      <block type="other_start"></block>
+      <block type="other_end"></block>
+    </category>
+        </xml>
+        <div id = "blocklyContainer">
+        <div id="blocklyDiv" style="height:98%;"></div>
+        </div>
+        <div id ="textCodeArea">
+            <h3>Text Output</h3>
+            <div id = "codeBox"> 
+                <code id="textCode">
+
+                </code>
+            </div>
+        </div>
+
+    </body>
+</html>
+    <script>
+    var workspace = Blockly.inject(blocklyDiv,
+        {toolbox: document.getElementById('toolbox')});
+    workspace.addChangeListener(realTimeUpdate);
+</script>

@@ -1,0 +1,26 @@
+body {
+    margin-left: 20px;
+}
+
+#blocklyContainer {
+
+    height:500px;
+    resize: vertical;
+    overflow:auto;
+    margin-right:50px;
+}
+#textCodeArea {
+}
+
+#codeBox {
+
+    height:700px;
+    margin-right:50px;    
+    overflow-y:auto;
+    background-color: white;
+}
+
+#textCode {
+    white-space: pre-wrap;
+}
+

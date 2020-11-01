@@ -1,0 +1,26 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.9464933009913739 0.30155568278769374 0.11495477961746702 0.7087122605506281
+  position 1.327744280806681 4.544163967593869 5.3356423173207155
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 4 4
+}
+Robot {
+  controller "supervisor"
+  supervisor TRUE
+  window "blockly"
+}
+DEF ROBOT Pioneer3dx {
+  controller "my_controller"
+  extensionSlot [
+    Gyro {
+    }
+  ]
+}
