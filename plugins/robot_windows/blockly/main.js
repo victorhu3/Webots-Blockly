@@ -33,7 +33,7 @@ function receiveMessage(value) {
     console.log(value);
 }
 
-const onresize = function(e) {
+const onResize = function(e) {
     Blockly.svgResize(workspace);
 }
 
@@ -42,7 +42,7 @@ window.onload = function() {
     window.robotWindow.receive = receiveMessage;
    
     var container = document.getElementById("blocklyContainer");
-    const blocklyResize = new ResizeObserver(onresize);
+    const blocklyResize = new ResizeObserver(onResize);
     blocklyResize.observe(container);
 }
 
