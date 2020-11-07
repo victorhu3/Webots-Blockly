@@ -2,6 +2,12 @@ body {
     margin-left: 20px;
 }
 
+#editorButtons {
+
+    margin-right: 50px;
+    margin-top: 35px;
+    float: right;
+}
 #blocklyContainer {
 
     height:500px;
@@ -24,3 +30,45 @@ body {
     white-space: pre-wrap;
 }
 
+/*modal css */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 71; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.closeButton {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeButton:hover,
+.closeButton:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#projectTitle:focus,
+#projectTitle:hover {
+
+    color: #4f4f4f;
+}

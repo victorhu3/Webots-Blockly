@@ -17,15 +17,28 @@
     <script src="google-blockly-31ee4ea/blocks/sensors.js"></script>
     <script src="google-blockly-31ee4ea/blocks/variables2.js"></script>
     <script src="google-blockly-31ee4ea/blocks/other.js"></script>
-    <script src="main.js"></script>
     <head>
         <div>
-        <h1 style = "display: inline-block">
-            Blockly
-        </h1>
-        <button id = "submit" onclick="convertCode()">Submit</button>
-        <button id = "save" onclick="saveBlocks()">Save</button>
-        <button id = "restore" onclick="restore()">Restore</button>
+            <h1 id = "projectTitle" contenteditable="true" style = "display: inline-block">Untited</h1>
+           <!-- <button onclick = "document.getElementById('projectTitle').focus()">rename</button>-->
+            <div id = "editorButtons">
+                <button id = "submit">Submit</button>
+                <button id = "save">Save</button>
+                <button id = "restore">Restore</button>
+            </div>
+        </div>
+
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="closeButton">&times;</span>
+                <div id = "saveList" style="margin-top: 30px;">
+               <a style = "display:block;">f</a>
+               <a style = "display:block;">f </a>
+                </div>
+            </div>
+
         </div>
     </head>
     <body>
@@ -89,6 +102,7 @@
 
     </body>
 </html>
+<script src="main.js"></script>
     <script>
     var workspace = Blockly.inject(blocklyDiv,
         {toolbox: document.getElementById('toolbox')});
