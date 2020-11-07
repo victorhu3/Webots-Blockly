@@ -8,11 +8,12 @@ function realTimeUpdate() {
     document.getElementById('textCode').innerHTML = code;
 }
 
+var title = document.getElementById("projectTitle");
+
 function saveBlocks() {
     if(typeof(Storage)!=="undefined") {
         var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
-        var title = document.getElementById("projectTitle").textContent;
-        localStorage.setItem(title, Blockly.Xml.domToText(xml));
+        localStorage.setItem(title.textContent, Blockly.Xml.domToText(xml));
     }
 }
 
@@ -25,6 +26,7 @@ function restore() {
     } else {
         console.log("error");
     }
+    title.textContent = this.textContent; 
 }
 
 function receiveMessage(value) {
@@ -50,7 +52,10 @@ function openModal() {
         link.title = key;
         link.onclick = restore;
         link.style.display = "block";
+        link.style.fontSize = "15px";
+        link.style.marginTop = "20px";
         link.textContent = key;
+        
         
         saveList.appendChild(link);
     }
