@@ -8,7 +8,7 @@ Blockly.Python['other_start'] = function(block) {
           '#angleCurrent = anglePast + integral of angular velocity over one timeStep since last updated angle\n' +
           '#should be called every time main loop repeats\n' +
           'def updateGyro():\n' +
-          ' global internal_angle\n' + 
+          ' global internal_angle\n' +
           ' internal_angle += (timeStep / 1000.0) * (gyro.getValues())[1]\n\n' +
           '#returns current angle of robot relative to starting angle\n' +
           '#angle does not drop to 0 after exceeding 360\n' +
@@ -31,18 +31,18 @@ Blockly.Python['other_start'] = function(block) {
           '        i += 1\n' +
           '    return (distTable[i-1][1]-distRawVal)/(distTable[i-1][1]-distTable[i][1]) * (distTable[i][0]-distTable[i-1][0]) + distTable[i-1][0]\n' + 
           'def getEncoders(posSensor):\n' +
-          '  global curEnc\n' +
-          '  curEnc = posSensor.getValue() / 3.1415 * 180.0\n' +
-          '  if curEnc != curEnc:\n' +
-          '    curEnc = 0\n' +
+          '  global encCount\n' +
+          '  encCount[posSensor] = posSensor.getValue() / 3.1415 * 180.0\n' +
+          '  if encCount[posSensor] != encCount[posSensor]:\n' +
+          '    encCount[posSensor] = 0\n' +
           '  return False\n\n' +
           'myRobot = Robot()\n' +
           'timeStep = 32\n' +
           'encObj = {}\n' +
-          'lastEncReset = 0\n' +
           'lastTimeReset = 0\n' +
           'gyroEnable = False\n' +
-          'curEnc = 0\n\n';
+          'encCount = {}\n' +
+          'lastEncReset = {}\n\n';
   return code;
 };
 

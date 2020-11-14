@@ -108,12 +108,12 @@ Blockly.user.keyMap.getKeyByAction = function(action) {
 Blockly.user.keyMap.serializeKeyEvent = function(e) {
   var modifiers = Blockly.utils.object.values(Blockly.user.keyMap.modifierKeys);
   var key = '';
-  for (var i = 0, keyName; (keyName = modifiers[i]); i++) {
+  /*for (var i = 0, keyName; (keyName = modifiers[i]); i++) {
     if (e.getModifierState(keyName)) {
       key += keyName;
     }
   }
-  key += e.keyCode;
+  key += e.keyCode;*/
   return key;
 };
 

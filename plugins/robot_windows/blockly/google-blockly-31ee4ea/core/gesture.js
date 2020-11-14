@@ -464,6 +464,8 @@ Blockly.Gesture.prototype.startDraggingBubble_ = function() {
  * @package
  */
 Blockly.Gesture.prototype.doStart = function(e) {
+  var scrollPos = window.pageYOffset;
+  
   if (Blockly.utils.isTargetInput(e)) {
     this.cancel();
     return;
@@ -499,6 +501,7 @@ Blockly.Gesture.prototype.doStart = function(e) {
 
   if (Blockly.utils.isRightButton(e)) {
     this.handleRightClick(e);
+    window.scroll(0, scrollPos);
     return;
   }
 

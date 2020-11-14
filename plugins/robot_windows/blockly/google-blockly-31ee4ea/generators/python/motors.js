@@ -7,8 +7,11 @@ Blockly.Python['motors_setupmotor'] = function(block) {
   // TODO: Assemble Python into code variable.
   var code = variable_motorObj + ' = myRobot.getMotor(\"' + text_motorName + '\")\n' + 
              'encObj[' + variable_motorObj + '] = ' + variable_motorObj + '.getPositionSensor()\n' +
-             variable_motorObj + '.setPosition(float(\"inf\"))\n' + 
-             'encObj[' + variable_motorObj + '].enable(timeStep)\n\n';
+             variable_motorObj + '.setPosition(float(\"inf\"))\n' +
+             variable_motorObj + '.setVelocity(0)\n' +
+             'encObj[' + variable_motorObj + '].enable(timeStep)\n' +
+             'encCount[' + variable_motorObj + '] = 0\n' +
+             'lastEncReset[encObj[' + variable_motorObj + ']] = 0\n\n';
   return code;
 };
 
@@ -24,14 +27,14 @@ Blockly.Python['motors_resetencoders'] = function(block) {
   var variable_motorObj = Blockly.Python.variableDB_.getName(block.getFieldValue('motorObj'), Blockly.Variables.NAME_TYPE);
   // TODO: Assemble Python into code variable.
   var code = 'getEncoders(encObj[' + variable_motorObj + '])\n' + 
-             'lastEncReset = curEnc\n';
+             'lastEncReset[encObj[' + variable_motorObj + ']] = encCount[encObj[' + variable_motorObj + ']]\n';
   return code;
 };
 
 Blockly.Python['motors_getencoders'] = function(block) {
   var variable_motorObj = Blockly.Python.variableDB_.getName(block.getFieldValue('motorObj'), Blockly.Variables.NAME_TYPE);
   // TODO: Assemble Python into code variable.
-  var code = 'getEncoders(encObj[' + variable_motorObj + ']) or curEnc - lastEncReset'
+  var code = 'getEncoders(encObj[' + variable_motorObj + ']) or encCount[encObj[' + variable_motorObj + ']] - lastEncReset[encObj[' + variable_motorObj + ']]'
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -58,17 +61,3 @@ Blockly.Python['time_resettime'] = function(block) {
   var code = 'lastTimeReset = myRobot.getTime()\n';
   return code;
 };
-
-//At setup:
-// import all files
-// motorObj = {}
-// encObj = {}
-// lastEncReset = 0
-// lastTimeReset = 0
-// curEnc = 0
-// def getEncoders(posSensor):
-//   global curEnc
-//   curEnc = posSensor.getValue() / 3.1415 * 180.0
-//   if curEnc != curEnc:
-//     curEnc = 0
-//   return False
