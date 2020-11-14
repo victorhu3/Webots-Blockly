@@ -11,9 +11,14 @@ function realTimeUpdate() {
 var title = document.getElementById("projectTitle");
 
 function saveBlocks() {
+    var db = window.localStorage;
+    if(db) console.log("a");
+    else console.log("No");
     if(typeof(Storage)!=="undefined") {
         var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
-        localStorage.setItem(title.textContent, Blockly.Xml.domToText(xml));
+        //window.localStorage.setItem("test", "test"); 
+        localStorage.getItem("test");
+        //localStorage.setItem(title.textContent, Blockly.Xml.domToText(xml));
     }
 }
 
@@ -95,6 +100,7 @@ window.onload = function() {
 }
 
 var container = document.getElementById("blocklyContainer");
-const blocklyResize = new ResizeObserver(onResize);
-blocklyResize.observe(container);
+//Resize Observers not supported on Windows
+//const blocklyResize = new ResizeObserver(onResize);
+//blocklyResize.observe(container);
 

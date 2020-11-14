@@ -966,6 +966,7 @@ Blockly.Css.register([
     'padding: 4px 0 4px 0;',
     'position: absolute;',
     'z-index: 70;', /* so blocks go under toolbox when dragging */
+    'width: 100px;',
     '-webkit-tap-highlight-color: transparent;', /* issue #1345 */
   '}',
 

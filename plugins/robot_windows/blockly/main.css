@@ -11,7 +11,7 @@ body {
 #blocklyContainer {
 
     height:500px;
-    resize: vertical;
+   /* resize: vertical; */
     overflow:auto;
     margin-right:50px;
 }
