@@ -18,7 +18,7 @@ Blockly.Python['sensors_initializesensor'] = function(block) {//when multiple of
   code += variable_sensorname + ' = myRobot.get';
   switch(dropdown_sensortype) {
     case 'lightSensor':
-      code += 'LightSensor';
+      code += 'Camera';
       break;
     case 'distanceSensor':
       code += 'DistanceSensor';
@@ -34,18 +34,18 @@ Blockly.Python['sensors_getgpsvals'] = function(block) {
 };
 
 Blockly.Python['sensors_getgyrovals'] = function(block) {
-  var code = 'internal_angle';
+  var code = 'getAngle()';
   return [code, Blockly.Python.ORDER_NONE];
 };
 
 Blockly.Python['sensors_getdistvals'] = function(block) {
   var distSensor = Blockly.Python.variableDB_.getName(block.getFieldValue('sensorName'), Blockly.Variables.NAME_TYPE);
-  var code = 'getDist(' + distSensor + ')\n';
+  var code = distSensor + '.getValue()';//'getDist(' + distSensor + ')\n';
   return [code, Blockly.Python.ORDER_NONE];
 };
 
 Blockly.Python['sensors_getlightvals'] = function(block) {
   var lightSensor = Blockly.Python.variableDB_.getName(block.getFieldValue('sensorName'), Blockly.Variables.NAME_TYPE);
-  var code = lightSensor + 'getValues()';
+  var code = lightSensor + '.imageGetGray(' + lightSensor + '.getImage(),1,1,1)';
   return [code, Blockly.Python.ORDER_NONE];
 };
