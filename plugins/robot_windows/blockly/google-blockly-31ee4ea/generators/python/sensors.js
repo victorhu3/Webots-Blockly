@@ -40,12 +40,12 @@ Blockly.Python['sensors_getgyrovals'] = function(block) {
 
 Blockly.Python['sensors_getdistvals'] = function(block) {
   var distSensor = Blockly.Python.variableDB_.getName(block.getFieldValue('sensorName'), Blockly.Variables.NAME_TYPE);
-  var code = distSensor + '.getValue()';//'getDist(' + distSensor + ')\n';
+  var code = 'getCookedDist(' + distSensor + ')\n';
   return [code, Blockly.Python.ORDER_NONE];
 };
 
 Blockly.Python['sensors_getlightvals'] = function(block) {
   var lightSensor = Blockly.Python.variableDB_.getName(block.getFieldValue('sensorName'), Blockly.Variables.NAME_TYPE);
-  var code = lightSensor + '.imageGetGray(' + lightSensor + '.getImage(),1,1,1)';
+  var code = lightSensor + '.imageGetGray(' + lightSensor + '.getImage(),0,0,1)';
   return [code, Blockly.Python.ORDER_NONE];
 };

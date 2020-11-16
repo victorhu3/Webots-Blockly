@@ -20,7 +20,6 @@ Blockly.Python['other_start'] = function(block) {
   code += 'def getCookedDist(internal_sensor):\n' +
           '    lookupTable = internal_sensor.getLookupTable()\n' +
           '    rawVal = internal_sensor.getValue()\n' +
-          '    print(rawVal)\n' +
           '    if rawVal <= lookupTable[len(lookupTable) - 2]: #rawVal too small --> maxDist\n' +
           '        return lookupTable[len(lookupTable) - 3]\n' +
           '    if rawVal >= lookupTable[1]: #rawVal too large --> minDist\n' +

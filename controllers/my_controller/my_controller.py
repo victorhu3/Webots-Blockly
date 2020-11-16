@@ -1,5 +1,5 @@
-lm = None
-rm = None
+sensor1 = None
+sensor2 = None
 
 
 from controller import Robot
@@ -9,7 +9,7 @@ from controller import Motor
 from controller import PositionSensor
 from controller import Gyro
 
-internal_angle = 0
+internal_angle = 0.0
 
 #updates angle variable according to angular velocity from gyro
 #angleCurrent = anglePast + integral of angular velocity over one timeStep since last updated angle
@@ -22,22 +22,23 @@ def updateGyro():
 #angle does not drop to 0 after exceeding 360
 #angle % 360 will yield relative angle with maximum 360
 def getAngle():
- return internal_angle * 180 / 3.1415
+ global internal_angle
+ return internal_angle * 180.0 / 3.1415
 
-def getDist(internal_distSensor):
-    distTable = internal_distSensor.getLookupTable()
-    distRawVal = internal_distSensor.getValue()
-    if distRawVal <= distTable[len(distTable) - 1][1]: #rawVal too small --> maxDist
-        return distTable[len(distTable) - 1][0]
-    if distRawVal >= distTable[0][1]: #rawVal too large --> minDist
-        return distTable[0][0]
-
+def getCookedDist(internal_sensor):
+    lookupTable = internal_sensor.getLookupTable()
+    rawVal = internal_sensor.getValue()
+    if rawVal <= lookupTable[len(lookupTable) - 2]: #rawVal too small --> maxDist
+        return lookupTable[len(lookupTable) - 3]
+    if rawVal >= lookupTable[1]: #rawVal too large --> minDist
+        return lookupTable[0]
     i = 0
-    for x in distTable:
-        if x[1] <= distRawVal:
+    for x in range(0, len(lookupTable), 3):
+        if lookupTable[x + 1] <= rawVal:
             break
         i += 1
-    return (distTable[i-1][1]-distRawVal)/(distTable[i-1][1]-distTable[i][1]) * (distTable[i][0]-distTable[i-1][0]) + distTable[i-1][0]
+    return (lookupTable[(i-1)*3+1]-rawVal)/(lookupTable[(i-1)*3+1]-lookupTable[i*3+1]) * (lookupTable[i*3]-lookupTable[(i-1)*3]) + lookupTable[(i-1)*3]
+
 def getEncoders(posSensor):
   global encCount
   encCount[posSensor] = posSensor.getValue() / 3.1415 * 180.0
@@ -53,29 +54,13 @@ gyroEnable = False
 encCount = {}
 lastEncReset = {}
 
-lm = myRobot.getMotor("left wheel")
-encObj[lm] = lm.getPositionSensor()
-lm.setPosition(float("inf"))
-lm.setVelocity(0)
-encObj[lm].enable(timeStep)
-encCount[lm] = 0
-lastEncReset[encObj[lm]] = 0
-
-rm = myRobot.getMotor("right wheel")
-encObj[rm] = rm.getPositionSensor()
-rm.setPosition(float("inf"))
-rm.setVelocity(0)
-encObj[rm].enable(timeStep)
-encCount[rm] = 0
-lastEncReset[encObj[rm]] = 0
-
-lm.setVelocity(3)
-rm.setVelocity(1)
-while myRobot.step(timeStep) != -1 and (getEncoders(encObj[lm]) or encCount[encObj[lm]] - lastEncReset[encObj[lm]]) < 300:
+sensor1 = myRobot.getCamera('light sensor')
+sensor1.enable(timeStep)
+sensor2 = myRobot.getDistanceSensor('distance sensor')
+sensor2.enable(timeStep)
+while myRobot.step(timeStep) != -1 and 1:
   if gyroEnable:
     updateGyro()
-  print(getEncoders(encObj[lm]) or encCount[encObj[lm]] - lastEncReset[encObj[lm]])
-getEncoders(encObj[rm])
-lastEncReset[encObj[rm]] = encCount[encObj[rm]]
-print(getEncoders(encObj[rm]) or encCount[encObj[rm]] - lastEncReset[encObj[rm]])
+  print(sensor1.imageGetGray(sensor1.getImage(),0,0,1))
+  print(getCookedDist(sensor2))
 
