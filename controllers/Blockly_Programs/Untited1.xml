@@ -1,0 +1,1 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable id="7N2cgnQZ.-4$U4ns:XF9">motorObj</variable></variables><block type="motors_setupmotor" id="AeNj)ekaexm6=xKS^Pg)" x="288" y="115"><field name="motorObj" id="7N2cgnQZ.-4$U4ns:XF9">motorObj</field><field name="motorName">motorName</field></block></xml>

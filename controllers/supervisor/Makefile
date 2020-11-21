@@ -64,6 +64,7 @@
 ### VERBOSE = 1
 ###
 ###-----------------------------------------------------------------------------
+LIBRARIES=-L. -lboost_date_time -lboost_filesystem -lpthread
 
 ### Do not modify: this includes Webots global Makefile.include
 space :=
