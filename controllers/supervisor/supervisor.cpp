@@ -104,7 +104,7 @@ do_session(tcp::socket socket)
              for(auto& entry : boost::make_iterator_range(filesystem::directory_iterator(p), {} )) {
 
                 string filePath = entry.path().string();
-                string fileName = filePath.substr(filePath.find_last_of("/") + 1); 
+                string fileName = filePath.substr(filePath.find_last_of("/\\") + 1); 
                 fileName.erase(fileName.size()-4, string::npos);
                 files += fileName + " ";
              }
