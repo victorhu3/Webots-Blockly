@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.9877448403755883 -0.15044743282883172 -0.04154154867861566 0.6659930681274205
-  position -0.11587584472919565 5.106054115131746 6.663347717827337
+  orientation -0.9999773783711899 -0.004807906004672923 0.004703911747918469 0.9881255615201564
+  position 0.39391351851101253 6.369255158175702 4.723704322950058
 }
 TexturedBackground {
 }
@@ -15,8 +15,9 @@ RectangleArena {
   floorSize 4 4
 }
 Wall {
-  translation 0.4 0 0
+  translation -6.82932e-09 0 -0.000318529
   rotation 0 1 0 1.57
+  size 1.5 0.4 1.5
 }
 Robot {
   controller "supervisor"
@@ -24,6 +25,7 @@ Robot {
   window "blockly"
 }
 DEF ROBOT Pioneer3dx {
+  translation -1.06 0.0975 1.03
   controller "my_controller"
   extensionSlot [
     Camera {
