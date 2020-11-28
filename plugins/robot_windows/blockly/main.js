@@ -2,12 +2,18 @@ var modal = document.getElementById("myModal");
 var closeButton = document.getElementsByClassName("closeButton")[0];
 var saveList = document.getElementById("saveList");
 
+var title = document.getElementById("projectTitle");
+
 const SocketCommand = {
     //kind of like an enum I guess
     SEND_CODE: "SEND_CODE",
     SAVE: "SAVE",
     LIST_SAVES: "LIST_SAVES",
     RESTORE_SAVE: "RESTORE_SAVE",
+    RESTORE_LAST: "RESTORE_LAST", //last submitted or saved file
+    RESTORE_LAST_NAME: "RESTORE_LAST_NAME",
+    SAVE_LAST: "SAVE_LAST",
+   
 };
 
 var currCommand = null; //stores the current command we are in the middle of processing 
@@ -17,7 +23,13 @@ if("WebSocket" in window) { //check if websockets are supported
     var ws = new WebSocket("ws://localhost:8000/test.py");
     ws.onopen = function() {
 
-    //    ws.send("testing");
+        document.getElementById("submit").disabled = false;
+        document.getElementById("save").disabled = false;
+        document.getElementById("restore").disabled = false;
+
+        currCommand = SocketCommand.RESTORE_LAST_NAME;
+        ws.send(currCommand);
+
     };
     ws.onmessage = function (evt) {
 
@@ -57,8 +69,20 @@ if("WebSocket" in window) { //check if websockets are supported
                 //alert(msg);
                 Blockly.mainWorkspace.clear();
 
-                var xml = Blockly.Xml.textToDom(msg);
-                Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
+                if(msg != "\0") { //If msg isn't empty
+                    var xml = Blockly.Xml.textToDom(msg);
+                    Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
+                }
+            break;
+            case SocketCommand.RESTORE_LAST_NAME:
+
+                if(msg != "\0") {
+               
+                    title.textContent = msg;
+                    ws.send(SocketCommand.RESTORE_LAST);
+                    currCommand = SocketCommand.RESTORE_SAVE; //Restoring last save will use RESTORE_SAVE in the switch statement
+                }
+
             break;
         }
     };
@@ -70,6 +94,15 @@ if("WebSocket" in window) { //check if websockets are supported
 
     alert("WebSocket is not supported");
 }
+
+function saveLast() {
+
+    currCommand = SocketCommand.SAVE_LAST;
+    ws.send(currCommand);
+
+    ws.send(title.textContent);
+}
+
 function convertCode() {
 
     currCommand = SocketCommand.SEND_CODE;
@@ -77,13 +110,13 @@ function convertCode() {
     var code = Blockly.Python.workspaceToCode(workspace);
     ws.send(SocketCommand.SEND_CODE);
     ws.send(code);
+
+    saveLast();
 }
 function realTimeUpdate() {
     var code = Blockly.Python.workspaceToCode(workspace);
     document.getElementById('textCode').innerHTML = code;
 }
-
-var title = document.getElementById("projectTitle");
 
 function saveBlocks() {
 
@@ -93,7 +126,8 @@ function saveBlocks() {
     ws.send(SocketCommand.SAVE);
     ws.send(title.textContent+".xml");
     ws.send(Blockly.Xml.domToText(xml));
-    //console.log(xml);
+    
+    saveLast();
 }
 
 function restore() {
@@ -139,6 +173,10 @@ function onResize(e) {
 document.getElementById("submit").onclick = convertCode;
 document.getElementById("save").onclick = saveBlocks;
 document.getElementById("restore").onclick = openModal;
+
+document.getElementById("submit").disabled = true;
+document.getElementById("save").disabled = true;
+document.getElementById("restore").disabled = true;
 
 document.getElementById("projectTitle").addEventListener("keydown", (e) => {
     if(e.key === "Enter") e.preventDefault();

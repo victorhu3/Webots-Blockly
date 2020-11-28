@@ -113,6 +113,28 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "style": "list_blocks",
     "tooltip": "%{BKY_LISTS_LENGTH_TOOLTIP}",
     "helpUrl": "%{BKY_LISTS_LENGTH_HELPURL}"
+  },
+  {
+	"type": "lists_append",
+	"message0": "to list %1 append %2 %3",
+	"args0": [
+	  {
+		"type": "input_value",
+		"name": "LIST"
+	  },
+	  {
+		"type": "input_dummy"
+	  },
+	  {
+		"type": "input_value",
+		"name": "TO"
+	  }
+	],
+	"previousStatement": null,
+	"nextStatement": null,
+	"colour": 260,
+	"tooltip": "",
+	"helpUrl": ""
   }
 ]);  // END JSON EXTRACT (Do not delete this comment.)
 

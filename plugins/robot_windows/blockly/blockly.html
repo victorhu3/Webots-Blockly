@@ -72,14 +72,6 @@
 	<block type="math_abs"></block>
 	<block type="math_mod"></block>
 	</category>
-	<!--<category name="Motors" colour="%{BKY_PROCEDURES_HUE}"
-	<block type="motors_setupmotor"></block>
-	<block type="motors_setspeed"></block>
-	<block type="motors_resetencoders"></block>
-	<block type="motors_getencoders"></block>
-	<block type="start"></block>
-	<block type="time_delay"></block>-->
-	<!-- </category> -->
 	<category name="Lists" colour="%{BKY_LISTS_HUE}">
       <block type="lists_create_with">
         <mutation items="0"></mutation>
@@ -101,6 +93,7 @@
           </block>
         </value>
       </block>
+      <block type="lists_length"></block>
       <block type="lists_getIndex">
         <value name="VALUE">
           <block type="variables_get">
@@ -116,6 +109,7 @@
         </value>
       </block>
       <block type="lists_getSublist">
+	 <block type="lists_append">
         <value name="LIST">
           <block type="variables_get">
             <field name="VAR">{listVariable}</field>
@@ -132,7 +126,7 @@
       <block type="lists_sort"></block>
     </category>
       <category name="Variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
-      <category name="Motors" colour=20>
+	<category name="Motors" colour=20>
       <block type="motors_setupmotor"></block>
       <block type="motors_setspeed"></block>
       <block type="motors_resetencoders"></block>
