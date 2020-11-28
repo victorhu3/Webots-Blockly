@@ -243,6 +243,15 @@ Blockly.Python['lists_setIndex'] = function(block) {
   throw Error('Unhandled combination (lists_setIndex).');
 };
 
+Blockly.Python['lists_append'] = function(block) {
+  var value_list = Blockly.Python.valueToCode(block, 'LIST', Blockly.Python.ORDER_ATOMIC);
+  var value_to = Blockly.Python.valueToCode(block, 'TO', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = value_list + '.append(' + value_to + ')\n';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return code;
+};
+
 Blockly.Python['lists_getSublist'] = function(block) {
   // Get sublist.
   var list = Blockly.Python.valueToCode(block, 'LIST',
