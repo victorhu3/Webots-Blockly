@@ -76,8 +76,35 @@
         <block type="start"></block>
         <block type="time_delay"></block>-->
         <!-- </category> -->
-      <category name="Variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
-      <category name="Motors" colour=20>
+     <category name="Variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
+	<category name="Lists" colour="%{BKY_LISTS_HUE}">
+      <block type="lists_create_with">
+        <mutation items="0"></mutation>
+      </block>
+      <block type="lists_length"></block>
+      <block type="lists_getIndex">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_setIndex">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+	 <block type="lists_append">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+    </category>
+	<category name="Motors" colour=20>
       <block type="motors_setupmotor"></block>
       <block type="motors_setspeed"></block>
       <block type="motors_resetencoders"></block>
