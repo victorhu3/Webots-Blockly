@@ -252,7 +252,7 @@ int main(int argc, char **argv) {
   // - perform simulation steps until Webots is stopping the controller
   while ((supervisor->step(timeStep)) != -1) {
 
-    //cout << "hello" << endl;
+    cout << "hello" << endl;
 
     string message = supervisor->wwiReceiveText();
     if(message.length() != 0) {

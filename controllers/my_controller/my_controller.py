@@ -1,5 +1,6 @@
 lm = None
 rm = None
+saveAngle = None
 
 
 from controller import Robot
@@ -73,6 +74,8 @@ lastEncReset[encObj[rm]] = 0
 gyroEnable = True
 gyro = myRobot.getGyro('gyro')
 gyro.enable(timeStep)
+gps = myRobot.getGPS('gps')
+gps.enable(timeStep)
 for count in range(4):
   lm.setVelocity(3)
   rm.setVelocity(3)
@@ -81,7 +84,7 @@ for count in range(4):
   while myRobot.step(timeStep) != -1 and (getEncoders(encObj[lm]) or encCount[encObj[lm]] - lastEncReset[encObj[lm]]) < 1200:
     if gyroEnable:
       updateGyro()
-    pass
+    print(gps.getValues())
   lm.setVelocity(0)
   rm.setVelocity(0)
   initTime = myRobot.getTime()
@@ -90,12 +93,11 @@ for count in range(4):
       break
   lm.setVelocity(3)
   rm.setVelocity(-3)
-  getEncoders(encObj[lm])
-  lastEncReset[encObj[lm]] = encCount[encObj[lm]]
-  while myRobot.step(timeStep) != -1 and (getEncoders(encObj[lm]) or encCount[encObj[lm]] - lastEncReset[encObj[lm]]) < 153:
+  saveAngle = getAngle()
+  while myRobot.step(timeStep) != -1 and (((saveAngle - (getAngle())) % 360)) < 85:
     if gyroEnable:
       updateGyro()
-    print(getAngle())
+    print(((saveAngle - (getAngle())) % 360))
   lm.setVelocity(0)
   rm.setVelocity(0)
   initTime = myRobot.getTime()
