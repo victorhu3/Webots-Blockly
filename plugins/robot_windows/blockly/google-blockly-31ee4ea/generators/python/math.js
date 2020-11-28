@@ -156,6 +156,21 @@ Blockly.Python['math_constant'] = function(block) {
   return CONSTANTS[constant];
 };
 
+Blockly.Python['math_abs'] = function(block) {
+  var val = Blockly.Python.valueToCode(block, 'val', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = 'abs(' + val + ')';
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+Blockly.Python['math_mod'] = function(block) {
+  var val = Blockly.Python.valueToCode(block, 'val', Blockly.Python.ORDER_ATOMIC);
+  var mod = Blockly.Python.valueToCode(block, 'mod', Blockly.Python.ORDER_ATOMIC);
+  var code = '(' + val + ' % ' + mod + ')';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
 Blockly.Python['math_number_property'] = function(block) {
   // Check if a number is even, odd, prime, whole, positive, or negative
   // or if it is divisible by certain number. Returns true or false.

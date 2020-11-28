@@ -165,6 +165,47 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "tooltip": "%{BKY_MATH_CONSTANT_TOOLTIP}",
     "helpUrl": "%{BKY_MATH_CONSTANT_HELPURL}"
   },
+  
+  {//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#5ubk3z
+  "type": "math_abs",
+  "message0": "abs %1 %2",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "val"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": 240,
+  "tooltip": "Calculates absolute value of a number",
+  "helpUrl": ""
+},
+  {//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vkosbo
+  "type": "math_mod",
+  "message0": "%1 mod %2 %3",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "val"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "mod"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": 240,
+  "tooltip": "Calculates {first argument} mod {second argument}",
+  "helpUrl": ""
+},
 
   // Block for checking if a number is even, odd, prime, whole, positive,
   // negative or if it is divisible by certain number.

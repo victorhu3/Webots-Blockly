@@ -78,7 +78,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		"tooltip": "",
 		"helpUrl": ""
 	},
-	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ecqozn
+	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#gtvgd9
 		"type": "time_delay",
 		"message0": "delay %1",
 		"args0": [
