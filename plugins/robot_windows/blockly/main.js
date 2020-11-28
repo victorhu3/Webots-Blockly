@@ -8,6 +8,8 @@ const SocketCommand = {
     SAVE: "SAVE",
     LIST_SAVES: "LIST_SAVES",
     RESTORE_SAVE: "RESTORE_SAVE",
+    RESTORE_LAST: "RESTORE_LAST", //last submitted or saved file
+    SAVE_LAST: "SAVE_LAST",
 };
 
 var currCommand = null; //stores the current command we are in the middle of processing 
@@ -20,7 +22,9 @@ if("WebSocket" in window) { //check if websockets are supported
         document.getElementById("submit").disabled = false;
         document.getElementById("save").disabled = false;
         document.getElementById("restore").disabled = false;
-    //    ws.send("testing");
+
+        ws.send(SocketCommand.RESTORE_LAST);
+        currCommand = SocketCommand.RESTORE_SAVE; //Restoring last save will use RESTORE_SAVE in the switch statement
     };
     ws.onmessage = function (evt) {
 
@@ -60,8 +64,10 @@ if("WebSocket" in window) { //check if websockets are supported
                 //alert(msg);
                 Blockly.mainWorkspace.clear();
 
-                var xml = Blockly.Xml.textToDom(msg);
-                Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
+                if(msg != "\0") { //If msg isn't empty
+                    var xml = Blockly.Xml.textToDom(msg);
+                    Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
+                }
             break;
         }
     };
@@ -73,6 +79,15 @@ if("WebSocket" in window) { //check if websockets are supported
 
     alert("WebSocket is not supported");
 }
+
+function saveLast() {
+
+    currCommand = SocketCommand.SAVE_LAST;
+    ws.send(currCommand);
+
+    ws.send(title.textContent);
+}
+
 function convertCode() {
 
     currCommand = SocketCommand.SEND_CODE;
@@ -80,6 +95,8 @@ function convertCode() {
     var code = Blockly.Python.workspaceToCode(workspace);
     ws.send(SocketCommand.SEND_CODE);
     ws.send(code);
+
+    saveLast();
 }
 function realTimeUpdate() {
     var code = Blockly.Python.workspaceToCode(workspace);
@@ -96,7 +113,8 @@ function saveBlocks() {
     ws.send(SocketCommand.SAVE);
     ws.send(title.textContent+".xml");
     ws.send(Blockly.Xml.domToText(xml));
-    //console.log(xml);
+    
+    saveLast();
 }
 
 function restore() {

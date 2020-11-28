@@ -43,7 +43,7 @@ void write_py_file(const std::string& s){
     of.close();
 }
 
-void saveBlocks(const std::string& fileName, const std::string& s) {
+void saveToFile(const std::string& fileName, const std::string& s) {
 
     string path = "../Blockly_Programs/" + fileName;
     ofstream of(path);
@@ -94,7 +94,7 @@ do_session(tcp::socket socket)
 
              ws.read(buffer);
              auto xml = beast::buffers_to_string(buffer.data());
-             saveBlocks(fileName, xml);
+             saveToFile(fileName, xml);
            }
            else if (s == "LIST_SAVES") {
 
@@ -106,7 +106,7 @@ do_session(tcp::socket socket)
                 string filePath = entry.path().string();
                 string fileName = filePath.substr(filePath.find_last_of("/\\") + 1); 
                 fileName.erase(fileName.size()-4, string::npos);
-                files += fileName + " ";
+                if(fileName[0] != '.') files += fileName + " ";
              }
            
              ws.write(net::buffer(files));
@@ -127,6 +127,52 @@ do_session(tcp::socket socket)
              in.read(fileBuff.data(), size);
 
              ws.write(net::buffer(fileBuff));
+
+             in.close();
+           }
+           else if(s == "RESTORE_LAST") {
+
+             ifstream in("../Blockly_Programs/.tmp.txt");
+             if(!in.fail()) {
+               
+               string fileName;
+               in >> fileName;
+               in.close();
+
+                fileName += ".xml";
+                 string filePath = "../Blockly_Programs/" + fileName;
+                 
+                 ifstream in(filePath, ios::binary | ios::ate);
+
+                 if(!in.fail()) { //Make this into a function already >:(
+
+                     streamsize size = in.tellg();
+                     in.seekg(0, ios::beg);
+
+                     vector<char> fileBuff(size);
+                     in.read(fileBuff.data(), size);
+
+                     ws.write(net::buffer(fileBuff));
+
+                     in.close();
+
+                 }
+                 else { //If file is not found, return empty
+                   ws.write(net::buffer("")); 
+                 }
+             }
+             else { //If the tmp file isn't found, return empty
+
+                   ws.write(net::buffer("")); 
+             }
+           }
+           else if(s == "SAVE_LAST") {
+
+             ws.read(buffer);
+
+             auto fileName = beast::buffers_to_string(buffer.data());
+          
+             saveToFile(".tmp.txt", fileName );
            }
 
            buffer.clear();
