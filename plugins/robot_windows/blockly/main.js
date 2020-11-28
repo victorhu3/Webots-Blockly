@@ -2,6 +2,8 @@ var modal = document.getElementById("myModal");
 var closeButton = document.getElementsByClassName("closeButton")[0];
 var saveList = document.getElementById("saveList");
 
+var title = document.getElementById("projectTitle");
+
 const SocketCommand = {
     //kind of like an enum I guess
     SEND_CODE: "SEND_CODE",
@@ -9,7 +11,9 @@ const SocketCommand = {
     LIST_SAVES: "LIST_SAVES",
     RESTORE_SAVE: "RESTORE_SAVE",
     RESTORE_LAST: "RESTORE_LAST", //last submitted or saved file
+    RESTORE_LAST_NAME: "RESTORE_LAST_NAME",
     SAVE_LAST: "SAVE_LAST",
+   
 };
 
 var currCommand = null; //stores the current command we are in the middle of processing 
@@ -23,8 +27,9 @@ if("WebSocket" in window) { //check if websockets are supported
         document.getElementById("save").disabled = false;
         document.getElementById("restore").disabled = false;
 
-        ws.send(SocketCommand.RESTORE_LAST);
-        currCommand = SocketCommand.RESTORE_SAVE; //Restoring last save will use RESTORE_SAVE in the switch statement
+        currCommand = SocketCommand.RESTORE_LAST_NAME;
+        ws.send(currCommand);
+
     };
     ws.onmessage = function (evt) {
 
@@ -69,6 +74,16 @@ if("WebSocket" in window) { //check if websockets are supported
                     Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
                 }
             break;
+            case SocketCommand.RESTORE_LAST_NAME:
+
+                if(msg != "\0") {
+               
+                    title.textContent = msg;
+                    ws.send(SocketCommand.RESTORE_LAST);
+                    currCommand = SocketCommand.RESTORE_SAVE; //Restoring last save will use RESTORE_SAVE in the switch statement
+                }
+
+            break;
         }
     };
     ws.onclose = function () {
@@ -102,8 +117,6 @@ function realTimeUpdate() {
     var code = Blockly.Python.workspaceToCode(workspace);
     document.getElementById('textCode').innerHTML = code;
 }
-
-var title = document.getElementById("projectTitle");
 
 function saveBlocks() {
 

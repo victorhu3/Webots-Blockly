@@ -130,6 +130,22 @@ do_session(tcp::socket socket)
 
              in.close();
            }
+           else if(s == "RESTORE_LAST_NAME") {
+
+            
+             ifstream in("../Blockly_Programs/.tmp.txt");
+             if(!in.fail()) {
+               
+               string fileName;
+               in >> fileName;
+               in.close();
+               ws.write(net::buffer(fileName));
+             }
+             else {
+
+                ws.write(net::buffer(""));
+             }
+           }
            else if(s == "RESTORE_LAST") {
 
              ifstream in("../Blockly_Programs/.tmp.txt");
