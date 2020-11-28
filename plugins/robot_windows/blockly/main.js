@@ -17,6 +17,9 @@ if("WebSocket" in window) { //check if websockets are supported
     var ws = new WebSocket("ws://localhost:8000/test.py");
     ws.onopen = function() {
 
+        document.getElementById("submit").disabled = false;
+        document.getElementById("save").disabled = false;
+        document.getElementById("restore").disabled = false;
     //    ws.send("testing");
     };
     ws.onmessage = function (evt) {
@@ -139,6 +142,10 @@ function onResize(e) {
 document.getElementById("submit").onclick = convertCode;
 document.getElementById("save").onclick = saveBlocks;
 document.getElementById("restore").onclick = openModal;
+
+document.getElementById("submit").disabled = true;
+document.getElementById("save").disabled = true;
+document.getElementById("restore").disabled = true;
 
 document.getElementById("projectTitle").addEventListener("keydown", (e) => {
     if(e.key === "Enter") e.preventDefault();
