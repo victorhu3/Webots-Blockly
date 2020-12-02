@@ -126,7 +126,7 @@ Blockly.Python['lists_getIndex'] = function(block) {
       }
       break;
     case 'FROM_START':
-      var at = Blockly.Python.getAdjustedInt(block, 'AT');
+      var at = (parseInt(Blockly.Python.getAdjustedInt(block, 'AT')) + 1).toString();
       if (mode == 'GET') {
         var code = list + '[' + at + ']';
         return [code, Blockly.Python.ORDER_MEMBER];
@@ -210,7 +210,7 @@ Blockly.Python['lists_setIndex'] = function(block) {
         }
       break;
     case 'FROM_START':
-      var at = Blockly.Python.getAdjustedInt(block, 'AT');
+      var at = (parseInt(Blockly.Python.getAdjustedInt(block, 'AT')) + 1).toString();
         if (mode == 'SET') {
           return list + '[' + at + '] = ' + value + '\n';
         } else if (mode == 'INSERT') {
@@ -241,6 +241,14 @@ Blockly.Python['lists_setIndex'] = function(block) {
       break;
   }
   throw Error('Unhandled combination (lists_setIndex).');
+};
+
+Blockly.Python['lists_append'] = function(block) {
+  var value_list = Blockly.Python.valueToCode(block, 'LIST', Blockly.Python.ORDER_ATOMIC);
+  var value_value = Blockly.Python.valueToCode(block, 'VALUE', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = value_list + '.append(' + value_value + ')\n';
+  return code;
 };
 
 Blockly.Python['lists_getSublist'] = function(block) {

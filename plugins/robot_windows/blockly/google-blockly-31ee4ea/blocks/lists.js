@@ -127,7 +127,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  },
 	  {
 		"type": "input_value",
-		"name": "TO"
+		"name": "VALUE"
 	  }
 	],
 	"previousStatement": null,
