@@ -1,6 +1,6 @@
 lm = None
+distSensor = None
 rm = None
-saveAngle = None
 
 
 from controller import Robot
@@ -71,20 +71,24 @@ encObj[rm].enable(timeStep)
 encCount[rm] = 0
 lastEncReset[encObj[rm]] = 0
 
-gyroEnable = True
-gyro = myRobot.getGyro('gyro')
-gyro.enable(timeStep)
-gps = myRobot.getGPS('gps')
-gps.enable(timeStep)
+distSensor = myRobot.getDistanceSensor('distance sensor')
+distSensor.enable(timeStep)
 for count in range(4):
   lm.setVelocity(3)
   rm.setVelocity(3)
-  getEncoders(encObj[lm])
-  lastEncReset[encObj[lm]] = encCount[encObj[lm]]
-  while myRobot.step(timeStep) != -1 and (getEncoders(encObj[lm]) or encCount[encObj[lm]] - lastEncReset[encObj[lm]]) < 1200:
+  initTime = myRobot.getTime()
+  while myRobot.step(timeStep) != -1:
+    if (myRobot.getTime() - initTime) * 1000.0 > 3000:
+      break
+  while myRobot.step(timeStep) != -1 and (getCookedDist(distSensor)
+  ) < 0.365:
     if gyroEnable:
       updateGyro()
-    print(gps.getValues())
+    pass
+  initTime = myRobot.getTime()
+  while myRobot.step(timeStep) != -1:
+    if (myRobot.getTime() - initTime) * 1000.0 > 850:
+      break
   lm.setVelocity(0)
   rm.setVelocity(0)
   initTime = myRobot.getTime()
@@ -93,14 +97,18 @@ for count in range(4):
       break
   lm.setVelocity(3)
   rm.setVelocity(-3)
-  saveAngle = getAngle()
-  while myRobot.step(timeStep) != -1 and (((saveAngle - (getAngle())) % 360)) < 85:
+  getEncoders(encObj[lm])
+  lastEncReset[encObj[lm]] = encCount[encObj[lm]]
+  while myRobot.step(timeStep) != -1 and (getEncoders(encObj[lm]) or encCount[encObj[lm]] - lastEncReset[encObj[lm]]) < 153:
     if gyroEnable:
       updateGyro()
-    print(((saveAngle - (getAngle())) % 360))
+    pass
   lm.setVelocity(0)
   rm.setVelocity(0)
   initTime = myRobot.getTime()
   while myRobot.step(timeStep) != -1:
     if (myRobot.getTime() - initTime) * 1000.0 > 500:
       break
+
+print(getCookedDist(distSensor)
+)

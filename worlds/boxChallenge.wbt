@@ -1,0 +1,52 @@
+#VRML_SIM R2020b utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.9999773783711899 -0.004807906004672923 0.004703911747918469 0.9881255615201564
+  position 0.3929842954992496 6.495822700085417 4.807115773512063
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  luminosity 2
+}
+RectangleArena {
+  floorSize 4 4
+}
+Wall {
+  translation -6.82932e-09 0 -0.000318529
+  rotation 0 1 0 1.57
+  size 1.5 0.4 1.5
+}
+Robot {
+  controller "supervisor"
+  supervisor TRUE
+  window "blockly"
+}
+DEF ROBOT Pioneer3dx {
+  translation -1.06 0.0975 1.03
+  controller "my_controller"
+  extensionSlot [
+    Camera {
+      translation 0.01 0 0
+      rotation -1 0 0 1.5708
+      name "light sensor"
+      width 1
+      height 1
+    }
+    DistanceSensor {
+      lookupTable [
+        0 1000 0
+        0.1 1000 0.1
+        0.2 400 0.1
+        0.3 50 0.1
+        0.37 30 0
+      ]
+    }
+    GPS {
+    }
+    Gyro {
+    }
+  ]
+}
