@@ -110,5 +110,4 @@ for count in range(4):
     if (myRobot.getTime() - initTime) * 1000.0 > 500:
       break
 
-print(getCookedDist(distSensor)
-)
+print(getCookedDist(distSensor))
