@@ -4,6 +4,29 @@ var saveList = document.getElementById("saveList");
 
 var title = document.getElementById("projectTitle");
 
+function openModal() {
+
+    currCommand = SocketCommand.LIST_SAVES;
+    ws.send(currCommand);
+
+    saveList.innerHTML = "";
+    var text = document.createElement("p");
+    text.innerHTML = "<b>Loading...</b>";
+    saveList.appendChild(text);
+
+}
+function closeModal() {
+    modal.style.display="none";
+}
+
+closeButton.onclick = closeModal;
+window.onclick = function(e) {
+
+    if(e.target == modal) {
+        closeModal();
+    }
+}
+
 const SocketCommand = {
     //kind of like an enum I guess
     SEND_CODE: "SEND_CODE",
@@ -68,6 +91,7 @@ if("WebSocket" in window) { //check if websockets are supported
            
                 //alert(msg);
                 Blockly.mainWorkspace.clear();
+                closeModal();
 
                 if(msg != "\0") { //If msg isn't empty
                     var xml = Blockly.Xml.textToDom(msg);
@@ -144,28 +168,6 @@ function receiveMessage(value) {
     console.log(value);
 }
 
-function openModal() {
-
-    currCommand = SocketCommand.LIST_SAVES;
-    ws.send(currCommand);
-
-    saveList.innerHTML = "";
-    var text = document.createElement("p");
-    text.innerHTML = "<b>Loading...</b>";
-    saveList.appendChild(text);
-
-}
-function closeModal() {
-    modal.style.display="none";
-}
-
-closeButton.onclick = closeModal;
-window.onclick = function(e) {
-
-    if(e.target == modal) {
-        closeModal();
-    }
-}
 function onResize(e) {
     Blockly.svgResize(workspace);
 }
