@@ -19,7 +19,7 @@ Blockly.Python['motors_setspeed'] = function(block) {
   var variable_motorObj = Blockly.Python.variableDB_.getName(block.getFieldValue('motorObj'), Blockly.Variables.NAME_TYPE);
   var number_motorSpeed = block.getFieldValue('motorSpeed');
   // TODO: Assemble Python into code variable.
-  var code = variable_motorObj + '.setVelocity(' + number_motorSpeed + ')\n';
+  var code = variable_motorObj + '.setVelocity((' + number_motorSpeed + ' / 100.0) * ' + variable_motorObj + '.getMaxVelocity())\n';
   return code;
 };
 

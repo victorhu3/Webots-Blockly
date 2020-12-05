@@ -26,7 +26,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 
   { //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#6xnpm9
 		"type": "motors_setspeed",
-		"message0": "setSpeed %1 %2rad/sec",
+		"message0": "setSpeed %1 %2\%",
 		"args0": [
 			{
 				"type": "field_variable",
