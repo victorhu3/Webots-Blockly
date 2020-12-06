@@ -76,16 +76,19 @@ DEF ROBOT Pioneer3dx {
     }
     DistanceSensor {
       lookupTable [
-        0 1000 0
-        0.1 1000 0.1
-        0.2 400 0.1
-        0.3 50 0.1
-        0.37 30 0
+        0 0 0
+				10 1000 0
       ]
     }
     GPS {
     }
     Gyro {
+    }
+		Camera {
+      translation 0 0 -0.14
+      rotation 0 0 1 0
+      recognition Recognition {
+      }
     }
   ]
 }

@@ -17,7 +17,7 @@ Blockly.Python['other_start'] = function(block) {
           ' global internal_angle\n' +
           ' return internal_angle * 180.0 / 3.1415\n\n';
    //extra functions for distance sensor
-  code += 'def getCookedDist(internal_sensor):\n' +
+  code += /*'def getCookedDist(internal_sensor):\n' +
           '    lookupTable = internal_sensor.getLookupTable()\n' +
           '    rawVal = internal_sensor.getValue()\n' +
           '    if rawVal <= lookupTable[len(lookupTable) - 2]: #rawVal too small --> maxDist\n' +
@@ -30,7 +30,7 @@ Blockly.Python['other_start'] = function(block) {
           '            break\n' +
           '        i += 1\n' +
           '    return (lookupTable[(i-1)*3+1]-rawVal)/(lookupTable[(i-1)*3+1]-lookupTable[i*3+1]) * (lookupTable[i*3]-lookupTable[(i-1)*3]) + lookupTable[(i-1)*3]\n' +
-          '\n' +
+          '\n' +*/
           'def getEncoders(posSensor):\n' +
           '  global encCount\n' +
           '  encCount[posSensor] = posSensor.getValue() / 3.1415 * 180.0\n' +

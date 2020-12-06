@@ -18,6 +18,7 @@
     <script src="google-blockly-31ee4ea/blocks/motors.js"></script>
     <script src="google-blockly-31ee4ea/blocks/sensors.js"></script>
     <script src="google-blockly-31ee4ea/blocks/other.js"></script>
+		<script src="google-blockly-31ee4ea/blocks/camera.js"></script>
     
     <script src="google-blockly-31ee4ea/generators/python/logic.js"></script>
     <script src="google-blockly-31ee4ea/generators/python/loops.js"></script>
@@ -30,6 +31,7 @@
     <script src="google-blockly-31ee4ea/generators/python/motors.js"></script>
     <script src="google-blockly-31ee4ea/generators/python/sensors.js"></script>
     <script src="google-blockly-31ee4ea/generators/python/other.js"></script>
+		<script src="google-blockly-31ee4ea/generators/python/camera.js"></script>
     
     <head>
         <div>
@@ -121,7 +123,14 @@
       <block type="sensors_getgpsvals"></block>
       <block type="sensors_getdistvals"></block>
       <block type="sensors_getlightvals"></block>
-    </category>
+		</category>
+	<category name="Camera" colour="#AABBCC"> <!-- Change color -->
+		<block type="camera_initializecamera"></block>
+	  <block type="camera_getrecognitionobjects"></block>
+		<block type="camera_getnumobj"></block>
+		<block type="camera_getobjcolors"></block>
+		<block type="camera_getobjpos"></block>
+	</category>
     <category name="Other" colour="#8B1723">
       <block type="other_start"></block>
       <block type="other_end"></block>

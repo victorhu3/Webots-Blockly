@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.9999773783711899 -0.004807906004672923 0.004703911747918469 0.9881255615201564
-  position 0.3929842954992496 6.495822700085417 4.807115773512063
+  orientation -0.9993788841491517 0.026082080025065037 0.02369748970593301 1.1585540443970197
+  position -0.38337083431305374 4.901102974286986 1.7678590033058181
 }
 TexturedBackground {
 }
@@ -25,7 +25,14 @@ Robot {
   window "blockly"
 }
 DEF ROBOT Pioneer3dx {
-  translation -1.06 0.0975 1.03
+  hidden position_0_0 -6.418755776118964e-08
+  hidden position_0_1 4.199941692007649e-12
+  hidden position_0_2 -4.3494422127272856e-11
+  hidden rotation_1 0 -1 0 6.664001874625056e-08
+  hidden position_1_0 0.006423871502585609
+  hidden rotation_2 1 0 0 0.0064238715025988265
+  translation -1.05351 0.0949251 1.08809
+  rotation 0.999895153782323 0.014479355098309181 -0.00017239072371650387 0.029225956391740804
   controller "my_controller"
   extensionSlot [
     Camera {
@@ -37,16 +44,19 @@ DEF ROBOT Pioneer3dx {
     }
     DistanceSensor {
       lookupTable [
-        0 1000 0
-        0.1 1000 0.1
-        0.2 400 0.1
-        0.3 50 0.1
-        0.37 30 0
+        0 0 0
+        10 1000 0
       ]
     }
     GPS {
     }
     Gyro {
+    }
+    Camera {
+      translation 0 0 -0.14
+      rotation 0 0 1 0
+      recognition Recognition {
+      }
     }
   ]
 }
