@@ -1,3 +1,5 @@
+var cameraColour = '#AABBCC'
+
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	{
 		"type": "camera_initializecamera",
@@ -16,7 +18,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		],
 		"previousStatement": null,
 		"nextStatement": null,
-		"colour": 230,
+		"colour": cameraColour,
 		"tooltip": "",
 		"helpUrl": ""
 	},
@@ -32,7 +34,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		}
 	  ],
 	  "output": null,
-	  "colour": 230,
+	  "colour": cameraColour,
 	  "tooltip": "",
 	  "helpUrl": ""
 	},
@@ -48,7 +50,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 			}
 		],
 		"output": null,
-		"colour": 230,
+		"colour": cameraColour,
 		"tooltip": "",
 		"helpUrl": ""
 	},
@@ -63,7 +65,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 			}
 		],
 		"output": null,
-		"colour": 230,
+		"colour": cameraColour,
 		"tooltip": "",
 		"helpUrl": ""
 	},
@@ -78,7 +80,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 			}
 		],
 		"output": null,
-		"colour": 230,
+		"colour": cameraColour,
 		"tooltip": "",
 		"helpUrl": ""
 	}
