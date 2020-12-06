@@ -1,5 +1,7 @@
 'use strict';
 
+var motorColor = 120
+
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 
 	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#2p6m9t
@@ -19,7 +21,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		],
 		"previousStatement": null,
 		"nextStatement": null,
-		"colour": 300,
+		"colour": motorColor,
 		"tooltip": "",
 		"helpUrl": ""
 	},
@@ -41,7 +43,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		],
 		"previousStatement": null,
 		"nextStatement": null,
-		"colour": 300,
+		"colour": motorColor,
 		"tooltip": "",
 		"helpUrl": ""
 	},
@@ -58,7 +60,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		],
 		"previousStatement": null,
 		"nextStatement": null,
-		"colour": 270,
+		"colour": motorColor,
 		"tooltip": "",
 		"helpUrl": ""
 	},
@@ -74,40 +76,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 			}
 		],
 		"output": null,
-		"colour": 270,
-		"tooltip": "",
-		"helpUrl": ""
-	},
-	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#gtvgd9
-		"type": "time_delay",
-		"message0": "delay %1ms",
-		"args0": [
-			{
-				"type": "field_number",
-				"name": "ms",
-				"value": 0
-			}
-		],
-		"previousStatement": null,
-		"nextStatement": null,
-		"colour": 230,
-		"tooltip": "",
-		"helpUrl": ""
-	},
-	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#9iwcmr
-		"type": "time_gettime",
-		"message0": "getTime",
-		"output": null,
-		"colour": 230,
-		"tooltip": "",
-		"helpUrl": ""
-	},
-	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ch66ck
-		"type": "time_resettime",
-		"message0": "resetTime",
-		"previousStatement": null,
-		"nextStatement": null,
-		"colour": 230,
+		"colour": motorColor,
 		"tooltip": "",
 		"helpUrl": ""
 	}

@@ -32,6 +32,8 @@ goog.require('Blockly.FieldVariable');
  */
 Blockly.Constants.Math.HUE = 230;
 
+var mathColor = 180
+
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for numeric value.
   {
@@ -44,7 +46,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     }],
     "output": "Number",
     "helpUrl": "%{BKY_MATH_NUMBER_HELPURL}",
-    "style": "math_blocks",
+    "colour": mathColor,
     "tooltip": "%{BKY_MATH_NUMBER_TOOLTIP}",
     "extensions": ["parent_tooltip_when_inline"]
   },
@@ -78,7 +80,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     ],
     "inputsInline": true,
     "output": "Number",
-    "style": "math_blocks",
+    "colour": mathColor,
     "helpUrl": "%{BKY_MATH_ARITHMETIC_HELPURL}",
     "extensions": ["math_op_tooltip"]
   },
@@ -180,7 +182,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   ],
   "inputsInline": true,
   "output": null,
-  "colour": 240,
+  "colour": mathColor,
   "tooltip": "Calculates absolute value of a number",
   "helpUrl": ""
 },
@@ -202,7 +204,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   ],
   "inputsInline": true,
   "output": null,
-  "colour": 240,
+  "colour": mathColor,
   "tooltip": "Calculates {first argument} mod {second argument}",
   "helpUrl": ""
 },

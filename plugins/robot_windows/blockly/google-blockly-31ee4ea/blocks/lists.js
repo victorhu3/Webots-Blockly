@@ -29,7 +29,13 @@ goog.require('Blockly.Mutator');
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['LISTS_HUE']. (2018 April 5)
  */
-Blockly.Constants.Lists.HUE = 260;
+
+var listStyle = document.createElement('style');
+listStyle.type = 'text/css';
+listStyle.innerHTML = '.cssClass {hue:#5b80a5}'; //background: #5b80a5; colour: #5b80a5; hue: 210; fill: #5b80a5}'
+document.getElementsByTagName('head')[0].appendChild(listStyle);
+
+var listColor = 210
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for creating an empty list
@@ -41,7 +47,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "type": "lists_create_empty",
     "message0": "%{BKY_LISTS_CREATE_EMPTY_TITLE}",
     "output": "Array",
-    "style": "list_blocks",
+    "colour": listColor,
     "tooltip": "%{BKY_LISTS_CREATE_EMPTY_TOOLTIP}",
     "helpUrl": "%{BKY_LISTS_CREATE_EMPTY_HELPURL}"
   },
@@ -61,7 +67,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       }
     ],
     "output": "Array",
-    "style": "list_blocks",
+    "colour": listColor,
     "tooltip": "%{BKY_LISTS_REPEAT_TOOLTIP}",
     "helpUrl": "%{BKY_LISTS_REPEAT_HELPURL}"
   },
@@ -78,7 +84,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     ],
     "output": "Array",
     "inputsInline": true,
-    "style": "list_blocks",
+    "colour": listColor,
     "tooltip": "%{BKY_LISTS_REVERSE_TOOLTIP}",
     "helpUrl": "%{BKY_LISTS_REVERSE_HELPURL}"
   },
@@ -94,7 +100,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       }
     ],
     "output": "Boolean",
-    "style": "list_blocks",
+    "colour": listColor,
     "tooltip": "%{BKY_LISTS_ISEMPTY_TOOLTIP}",
     "helpUrl": "%{BKY_LISTS_ISEMPTY_HELPURL}"
   },
@@ -110,7 +116,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       }
     ],
     "output": "Number",
-    "style": "list_blocks",
+    "colour": listColor,
     "tooltip": "%{BKY_LISTS_LENGTH_TOOLTIP}",
     "helpUrl": "%{BKY_LISTS_LENGTH_HELPURL}"
   },
@@ -132,7 +138,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	],
 	"previousStatement": null,
 	"nextStatement": null,
-	"colour": 260,
+	"colour": listColor,
 	"tooltip": "",
 	"helpUrl": ""
   }
@@ -145,7 +151,7 @@ Blockly.Blocks['lists_create_with'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg['LISTS_CREATE_WITH_HELPURL']);
-    this.setStyle('list_blocks');
+    this.setStyle('listStyle');
     this.itemCount_ = 3;
     this.updateShape_();
     this.setOutput(true, 'Array');
@@ -306,7 +312,7 @@ Blockly.Blocks['lists_indexOf'] = {
           [Blockly.Msg['LISTS_INDEX_OF_LAST'], 'LAST']
         ];
     this.setHelpUrl(Blockly.Msg['LISTS_INDEX_OF_HELPURL']);
-    this.setStyle('list_blocks');
+    this.setStyle('listStyle');
     this.setOutput(true, 'Number');
     this.appendValueInput('VALUE')
         .setCheck('Array')
@@ -344,7 +350,7 @@ Blockly.Blocks['lists_getIndex'] = {
           [Blockly.Msg['LISTS_GET_INDEX_RANDOM'], 'RANDOM']
         ];
     this.setHelpUrl(Blockly.Msg['LISTS_GET_INDEX_HELPURL']);
-    this.setStyle('list_blocks');
+    this.setStyle('listStyle');
     var modeMenu = new Blockly.FieldDropdown(MODE, function(value) {
       var isStatement = (value == 'REMOVE');
       this.getSourceBlock().updateStatement_(isStatement);
@@ -528,7 +534,7 @@ Blockly.Blocks['lists_setIndex'] = {
           [Blockly.Msg['LISTS_GET_INDEX_RANDOM'], 'RANDOM']
         ];
     this.setHelpUrl(Blockly.Msg['LISTS_SET_INDEX_HELPURL']);
-    this.setStyle('list_blocks');
+    this.setStyle('listStyle');
     this.appendValueInput('LIST')
         .setCheck('Array')
         .appendField(Blockly.Msg['LISTS_SET_INDEX_INPUT_IN_LIST']);
@@ -791,7 +797,7 @@ Blockly.Blocks['lists_sort'] = {
         }
       ],
       "output": "Array",
-      "style": "list_blocks",
+      "colour": listColor,
       "tooltip": Blockly.Msg['LISTS_SORT_TOOLTIP'],
       "helpUrl": Blockly.Msg['LISTS_SORT_HELPURL']
     });

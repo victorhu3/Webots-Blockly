@@ -29,7 +29,13 @@ goog.require('Blockly.Mutator');
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['LOGIC_HUE']. (2018 April 5)
  */
-Blockly.Constants.Logic.HUE = 210;
+Blockly.Constants.Logic.HUE = 240;
+
+var controlStyle = document.createElement('style');
+controlStyle.type = 'text/css';
+controlStyle.innerHTML = '.cssClass {color: "5b5ba5";}'
+document.getElementsByTagName('head')[0].appendChild(controlStyle);
+var controlColor = 240
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for boolean data type: true and false.
@@ -47,7 +53,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       }
     ],
     "output": "Boolean",
-    "style": "logic_blocks",
+    "colour": controlColor,
     "tooltip": "%{BKY_LOGIC_BOOLEAN_TOOLTIP}",
     "helpUrl": "%{BKY_LOGIC_BOOLEAN_HELPURL}"
   },
@@ -71,7 +77,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "logic_blocks",
+    "colour": controlColor,
     "helpUrl": "%{BKY_CONTROLS_IF_HELPURL}",
     "mutator": "controls_if_mutator",
     "extensions": ["controls_if_tooltip"]
@@ -103,7 +109,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "logic_blocks",
+    "colour": controlColor,
     "tooltip": "%{BKYCONTROLS_IF_TOOLTIP_2}",
     "helpUrl": "%{BKY_CONTROLS_IF_HELPURL}",
     "extensions": ["controls_if_tooltip"]
@@ -136,7 +142,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     ],
     "inputsInline": true,
     "output": "Boolean",
-    "style": "logic_blocks",
+    "colour": controlColor,
     "helpUrl": "%{BKY_LOGIC_COMPARE_HELPURL}",
     "extensions": ["logic_compare", "logic_op_tooltip"]
   },
@@ -166,7 +172,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     ],
     "inputsInline": true,
     "output": "Boolean",
-    "style": "logic_blocks",
+    "colour": controlColor,
     "helpUrl": "%{BKY_LOGIC_OPERATION_HELPURL}",
     "extensions": ["logic_op_tooltip"]
   },
@@ -182,7 +188,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       }
     ],
     "output": "Boolean",
-    "style": "logic_blocks",
+    "colour": controlColor,
     "tooltip": "%{BKY_LOGIC_NEGATE_TOOLTIP}",
     "helpUrl": "%{BKY_LOGIC_NEGATE_HELPURL}"
   },
@@ -191,7 +197,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "type": "logic_null",
     "message0": "%{BKY_LOGIC_NULL}",
     "output": null,
-    "style": "logic_blocks",
+    "colour": controlColor,
     "tooltip": "%{BKY_LOGIC_NULL_TOOLTIP}",
     "helpUrl": "%{BKY_LOGIC_NULL_HELPURL}"
   },
@@ -221,7 +227,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       }
     ],
     "output": null,
-    "style": "logic_blocks",
+    "colour": controlColor,
     "tooltip": "%{BKY_LOGIC_TERNARY_TOOLTIP}",
     "helpUrl": "%{BKY_LOGIC_TERNARY_HELPURL}",
     "extensions": ["logic_ternary"]
@@ -235,7 +241,7 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
     "message0": "%{BKY_CONTROLS_IF_IF_TITLE_IF}",
     "nextStatement": null,
     "enableContextMenu": false,
-    "style": "logic_blocks",
+    "colour": controlColor,
     "tooltip": "%{BKY_CONTROLS_IF_IF_TOOLTIP}"
   },
   // Block representing the else-if statement in the controls_if mutator.
@@ -245,7 +251,7 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
     "previousStatement": null,
     "nextStatement": null,
     "enableContextMenu": false,
-    "style": "logic_blocks",
+    "colour": controlColor,
     "tooltip": "%{BKY_CONTROLS_IF_ELSEIF_TOOLTIP}"
   },
   // Block representing the else statement in the controls_if mutator.
@@ -254,7 +260,7 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
     "message0": "%{BKY_CONTROLS_IF_ELSE_TITLE_ELSE}",
     "previousStatement": null,
     "enableContextMenu": false,
-    "style": "logic_blocks",
+    "colour": controlColor,
     "tooltip": "%{BKY_CONTROLS_IF_ELSE_TOOLTIP}"
   }
 ]);

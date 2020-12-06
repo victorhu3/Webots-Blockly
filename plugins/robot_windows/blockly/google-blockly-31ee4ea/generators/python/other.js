@@ -52,4 +52,10 @@ Blockly.Python['other_end'] = function(block) {
   return code;
 };
 
+Blockly.Python['other_text'] = function(block) {
+  // Text value.
+  var code = Blockly.Python.quote_(block.getFieldValue('TEXT'));
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 //REMEMBER TO ADD UPDATE GYRO TO LOOP

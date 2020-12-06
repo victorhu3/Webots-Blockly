@@ -16,6 +16,7 @@
     <script src="google-blockly-31ee4ea/blocks/variables.js"></script>
     <script src="google-blockly-31ee4ea/blocks/procedures.js"></script>
     <script src="google-blockly-31ee4ea/blocks/motors.js"></script>
+	<script src="google-blockly-31ee4ea/blocks/time.js"></script>
     <script src="google-blockly-31ee4ea/blocks/sensors.js"></script>
     <script src="google-blockly-31ee4ea/blocks/other.js"></script>
     
@@ -28,6 +29,7 @@
     <script src="google-blockly-31ee4ea/generators/python/variables.js"></script>
     <script src="google-blockly-31ee4ea/generators/python/procedures.js"></script>
     <script src="google-blockly-31ee4ea/generators/python/motors.js"></script>
+    <script src="google-blockly-31ee4ea/generators/python/time.js"></script>
     <script src="google-blockly-31ee4ea/generators/python/sensors.js"></script>
     <script src="google-blockly-31ee4ea/generators/python/other.js"></script>
     
@@ -58,22 +60,36 @@
     <body>
 
 	<xml id="toolbox" style="display: none">
-	<category name="Control" colour=5>
-	<block type="controls_if"></block>
-	<block type="controls_repeat_ext"></block>
-	<block type="logic_compare"></block>
-	<block type="logic_operation"></block>
-	<block type="text"></block>
-	<block type="text_print"></block>
-	<block type="controls_whileUntil"></block> 
+    <category name="Variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
+	<category name="Functions" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
+	<category name="Motors" colour=120>
+      <block type="motors_setupmotor"></block>
+      <block type="motors_setspeed"></block>
+      <block type="motors_resetencoders"></block>
+      <block type="motors_getencoders"></block>
+    </category>
+	<category name="Time" colour=80>
+      <block type="time_delay"></block>
+      <block type="time_gettime"></block>
+      <block type="time_resettime"></block>
+    </category>
+    <category name="Sensors" colour=60>
+      <block type="sensors_initializegyro"></block>
+      <block type="sensors_initializegps"></block>
+      <block type="sensors_initializesensor"></block>
+      <block type="sensors_getgyrovals"></block>
+      <block type="sensors_getgpsvals"></block>
+      <block type="sensors_getdistvals"></block>
+      <block type="sensors_getlightvals"></block>
+    </category>
+	<category name="Control" colour=240>
+	  <block type="controls_if"></block>
+	  <block type="controls_repeat_ext"></block>
+	  <block type="logic_compare"></block>
+	  <block type="logic_operation"></block>
+	  <block type="controls_whileUntil"></block> 
 	</category>
-	<category name="Math" colour=240>
-	<block type="math_number"></block>
-	<block type="math_arithmetic"></block>
-	<block type="math_abs"></block>
-	<block type="math_mod"></block>
-	</category>
-	<category name="Lists" colour="%{BKY_LISTS_HUE}">
+	<category name="Lists" colour=210>
       <block type="lists_create_with">
         <mutation items="0"></mutation>
       </block>
@@ -101,30 +117,17 @@
         </value>
       </block>
     </category>
-      <category name="Variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
-	<category name="Motors" colour=20>
-      <block type="motors_setupmotor"></block>
-      <block type="motors_setspeed"></block>
-      <block type="motors_resetencoders"></block>
-      <block type="motors_getencoders"></block>
-    </category>
-    <category name="Time" colour=90>
-      <block type="time_delay"></block>
-      <block type="time_gettime"></block>
-      <block type="time_resettime"></block>
-    </category>
-    <category name="Sensors" colour="#C4C443">
-      <block type="sensors_initializegyro"></block>
-      <block type="sensors_initializegps"></block>
-      <block type="sensors_initializesensor"></block>
-      <block type="sensors_getgyrovals"></block>
-      <block type="sensors_getgpsvals"></block>
-      <block type="sensors_getdistvals"></block>
-      <block type="sensors_getlightvals"></block>
-    </category>
-    <category name="Other" colour="#8B1723">
+	<category name="Math" colour=180>
+	  <block type="math_number"></block>
+	  <block type="math_arithmetic"></block>
+	  <block type="math_abs"></block>
+	  <block type="math_mod"></block>
+	</category>
+    <category name="Other" colour=0>
       <block type="other_start"></block>
       <block type="other_end"></block>
+	  <block type="text"></block>
+	  <block type="text_print"></block>
     </category>
         </xml>
         <div id = "blocklyContainer">

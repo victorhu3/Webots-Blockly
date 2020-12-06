@@ -1,5 +1,7 @@
 'use strict';
 
+var sensorColor = 60
+
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#9g4iqu
 	  "type": "sensors_initializegyro",
@@ -13,7 +15,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  ],
 	  "previousStatement": null,
 	  "nextStatement": null,
-	  "colour": 60,
+	  "colour": sensorColor,
 	  "tooltip": "Enter sensor tag",
 	  "helpUrl": ""
 	},
@@ -29,7 +31,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  ],
 	  "previousStatement": null,
 	  "nextStatement": null,
-	  "colour": 60,
+	  "colour": sensorColor,
 	  "tooltip": "Enter sensor tag",
 	  "helpUrl": ""
 	},
@@ -64,7 +66,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  ],
 	  "previousStatement": null,
 	  "nextStatement": null,
-	  "colour": 60,
+	  "colour": sensorColor,
 	  "tooltip": "Choose sensor type; enter sensor tag; create a variable for this sensor",
 	  "helpUrl": ""
 	},
@@ -72,7 +74,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  "type": "sensors_getgpsvals",
 	  "message0": "getGPSVals",
 	  "output": null,
-	  "colour": 60,
+	  "colour": sensorColor,
 	  "tooltip": "returns a list w/ x-val, y-val, z-val",
 	  "helpUrl": ""
 	},
@@ -80,7 +82,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  "type": "sensors_getgyrovals",
 	  "message0": "getGyroVals",
 	  "output": null,
-	  "colour": 60,
+	  "colour": sensorColor,
 	  "tooltip": "returns angle",
 	  "helpUrl": ""
 	},
@@ -95,7 +97,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	    }
 	  ],
 	  "output": null,
-	  "colour": 60,
+	  "colour": sensorColor,
 	  "tooltip": "returns distance in cm",
 	  "helpUrl": ""
 	},
@@ -110,7 +112,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	    }
 	  ],
 	  "output": null,
-	  "colour": 60,
+	  "colour": sensorColor,
 	  "tooltip": "returns brightness represented by a real number between 0 and 1000",
 	  "helpUrl": ""
 	}

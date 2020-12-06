@@ -32,6 +32,7 @@ goog.require('Blockly.Warning');
  * @deprecated Use Blockly.Msg['LOOPS_HUE']. (2018 April 5)
  */
 Blockly.Constants.Loops.HUE = 120;
+var controlColor = 240;
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for repeat n times (external number).
@@ -50,7 +51,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     }],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "loop_blocks",
+    "colour": controlColor,
     "tooltip": "%{BKY_CONTROLS_REPEAT_TOOLTIP}",
     "helpUrl": "%{BKY_CONTROLS_REPEAT_HELPURL}"
   },
@@ -73,7 +74,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     }],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "loop_blocks",
+    "colour": controlColor,
     "tooltip": "%{BKY_CONTROLS_REPEAT_TOOLTIP}",
     "helpUrl": "%{BKY_CONTROLS_REPEAT_HELPURL}"
   },
@@ -106,7 +107,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     }],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "loop_blocks",
+    "colour": controlColor,
     "helpUrl": "%{BKY_CONTROLS_WHILEUNTIL_HELPURL}",
     "extensions": ["controls_whileUntil_tooltip"]
   },
@@ -147,7 +148,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "inputsInline": true,
     "previousStatement": null,
     "nextStatement": null,
-    "style": "loop_blocks",
+    "colour": controlColor,
     "helpUrl": "%{BKY_CONTROLS_FOR_HELPURL}",
     "extensions": [
       "contextMenu_newGetVariableBlock",
@@ -177,7 +178,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     }],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "loop_blocks",
+    "colour": controlColor,
     "helpUrl": "%{BKY_CONTROLS_FOREACH_HELPURL}",
     "extensions": [
       "contextMenu_newGetVariableBlock",
@@ -197,7 +198,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       ]
     }],
     "previousStatement": null,
-    "style": "loop_blocks",
+    "colour": controlColor,
     "helpUrl": "%{BKY_CONTROLS_FLOW_STATEMENTS_HELPURL}",
     "extensions": [
       "controls_flow_tooltip",

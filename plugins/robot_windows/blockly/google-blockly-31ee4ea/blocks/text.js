@@ -29,6 +29,8 @@ goog.require('Blockly.Mutator');
  */
 Blockly.Constants.Text.HUE = 160;
 
+var otherColor = 0
+
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for text value
   {
@@ -40,7 +42,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       "text": ""
     }],
     "output": "String",
-    "style": "text_blocks",
+    "colour": otherColor,
     "helpUrl": "%{BKY_TEXT_TEXT_HELPURL}",
     "tooltip": "%{BKY_TEXT_TEXT_TOOLTIP}",
     "extensions": [
@@ -397,7 +399,7 @@ Blockly.Blocks['text_print'] = {
       ],
       "previousStatement": null,
       "nextStatement": null,
-      "style": "text_blocks",
+      "colour": otherColor,
       "tooltip": Blockly.Msg['TEXT_PRINT_TOOLTIP'],
       "helpUrl": Blockly.Msg['TEXT_PRINT_HELPURL']
     });
