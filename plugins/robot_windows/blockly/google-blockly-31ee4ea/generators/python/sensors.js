@@ -40,7 +40,7 @@ Blockly.Python['sensors_getgyrovals'] = function(block) {
 
 Blockly.Python['sensors_getdistvals'] = function(block) {
   var distSensor = Blockly.Python.variableDB_.getName(block.getFieldValue('sensorName'), Blockly.Variables.NAME_TYPE);
-  var code = 'getCookedDist(' + distSensor + ')\n';
+  var code = distSensor + '.getValue()';
   return [code, Blockly.Python.ORDER_NONE];
 };
 

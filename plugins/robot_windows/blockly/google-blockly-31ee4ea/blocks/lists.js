@@ -32,7 +32,7 @@ goog.require('Blockly.Mutator');
 
 var listStyle = document.createElement('style');
 listStyle.type = 'text/css';
-listStyle.innerHTML = '.cssClass {hue:#5b80a5}'; //background: #5b80a5; colour: #5b80a5; hue: 210; fill: #5b80a5}'
+listStyle.innerHTML = '.cssClass {hue:#AABBCC}'; //background: #5b80a5; colour: #5b80a5; hue: 210; fill: #5b80a5}'
 document.getElementsByTagName('head')[0].appendChild(listStyle);
 
 var listColor = 210

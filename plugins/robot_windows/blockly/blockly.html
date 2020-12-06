@@ -16,9 +16,10 @@
     <script src="google-blockly-31ee4ea/blocks/variables.js"></script>
     <script src="google-blockly-31ee4ea/blocks/procedures.js"></script>
     <script src="google-blockly-31ee4ea/blocks/motors.js"></script>
-	<script src="google-blockly-31ee4ea/blocks/time.js"></script>
+		<script src="google-blockly-31ee4ea/blocks/time.js"></script>
     <script src="google-blockly-31ee4ea/blocks/sensors.js"></script>
     <script src="google-blockly-31ee4ea/blocks/other.js"></script>
+		<script src="google-blockly-31ee4ea/blocks/camera.js"></script>
     
     <script src="google-blockly-31ee4ea/generators/python/logic.js"></script>
     <script src="google-blockly-31ee4ea/generators/python/loops.js"></script>
@@ -32,6 +33,7 @@
     <script src="google-blockly-31ee4ea/generators/python/time.js"></script>
     <script src="google-blockly-31ee4ea/generators/python/sensors.js"></script>
     <script src="google-blockly-31ee4ea/generators/python/other.js"></script>
+		<script src="google-blockly-31ee4ea/generators/python/camera.js"></script>
     
     <head>
         <div>
@@ -123,12 +125,19 @@
 	  <block type="math_abs"></block>
 	  <block type="math_mod"></block>
 	</category>
-    <category name="Other" colour=0>
-      <block type="other_start"></block>
-      <block type="other_end"></block>
-	  <block type="text"></block>
-	  <block type="text_print"></block>
-    </category>
+	<category name="Camera" colour="#AABBCC"> <!-- Change color -->
+		<block type="camera_initializecamera"></block>
+	  <block type="camera_getrecognitionobjects"></block>
+		<block type="camera_getnumobj"></block>
+		<block type="camera_getobjcolors"></block>
+		<block type="camera_getobjpos"></block>
+	</category>
+	<category name="Other" colour=0>
+		<block type="other_start"></block>
+		<block type="other_end"></block>
+		<block type="text"></block>
+		<block type="text_print"></block>
+	</category>
         </xml>
         <div id = "blocklyContainer">
         <div id="blocklyDiv" style="height:98%;"></div>

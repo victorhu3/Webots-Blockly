@@ -126,9 +126,9 @@ Blockly.Python['lists_getIndex'] = function(block) {
       }
       break;
     case 'FROM_START':
-      var at = (parseInt(Blockly.Python.getAdjustedInt(block, 'AT')) + 1).toString();
+      var at = Blockly.Python.getAdjustedInt(block, 'AT')
       if (mode == 'GET') {
-        var code = list + '[' + at + ']';
+        var code = list + '[' + at + ' + 1]';
         return [code, Blockly.Python.ORDER_MEMBER];
       } else if (mode == 'GET_REMOVE') {
         var code = list + '.pop(' + at + ')';
@@ -210,9 +210,9 @@ Blockly.Python['lists_setIndex'] = function(block) {
         }
       break;
     case 'FROM_START':
-      var at = (parseInt(Blockly.Python.getAdjustedInt(block, 'AT')) + 1).toString();
+      var at = Blockly.Python.getAdjustedInt(block, 'AT')
         if (mode == 'SET') {
-          return list + '[' + at + '] = ' + value + '\n';
+          return list + '[' + at + ' + 1] = ' + value + '\n';
         } else if (mode == 'INSERT') {
           return list + '.insert(' + at + ', ' + value + ')\n';
         }
