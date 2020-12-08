@@ -1,6 +1,3 @@
-var motor = 0;
-var enc = 1;
-
 Blockly.Python['motors_setupmotor'] = function(block) {
   var variable_motorObj = Blockly.Python.variableDB_.getName(block.getFieldValue('motorObj'), Blockly.Variables.NAME_TYPE);
   var text_motorName = block.getFieldValue('motorName');
@@ -17,9 +14,9 @@ Blockly.Python['motors_setupmotor'] = function(block) {
 
 Blockly.Python['motors_setspeed'] = function(block) {
   var variable_motorObj = Blockly.Python.variableDB_.getName(block.getFieldValue('motorObj'), Blockly.Variables.NAME_TYPE);
-  var number_motorSpeed = block.getFieldValue('motorSpeed');
+  var value_motorSpeed = Blockly.Python.valueToCode(block, 'motorSpeed', Blockly.Python.ORDER_ATOMIC);
   // TODO: Assemble Python into code variable.
-  var code = variable_motorObj + '.setVelocity((' + number_motorSpeed + ' / 100.0) * ' + variable_motorObj + '.getMaxVelocity())\n';
+  var code = variable_motorObj + '.setVelocity((' + value_motorSpeed + ' / 100.0) * ' + variable_motorObj + '.getMaxVelocity())\n';
   return code;
 };
 

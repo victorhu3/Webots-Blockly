@@ -3,14 +3,13 @@
 var timeColor = 80
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
-	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#gtvgd9
+	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#fya36y
 		"type": "time_delay",
-		"message0": "delay %1ms",
+		"message0": "delay %1 ms",
 		"args0": [
 			{
-				"type": "field_number",
-				"name": "ms",
-				"value": 0
+				"type": "input_value",
+				"name": "ms"
 			}
 		],
 		"previousStatement": null,
