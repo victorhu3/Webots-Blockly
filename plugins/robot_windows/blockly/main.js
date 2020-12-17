@@ -43,7 +43,7 @@ var currCommand = null; //stores the current command we are in the middle of pro
 
 if("WebSocket" in window) { //check if websockets are supported
     
-    var ws = new WebSocket("ws://localhost:8000/test.py");
+    var ws = new WebSocket("ws://localhost:8001/test.py");
     ws.onopen = function() {
 
         document.getElementById("submit").disabled = false;
@@ -75,9 +75,19 @@ if("WebSocket" in window) { //check if websockets are supported
                     link.style.display = "block";
                     link.style.fontSize = "15px";
                     link.style.marginTop = "20px";
+                    link.style.cursor = "pointer";
                     link.textContent = files[i];
-                    
-                    
+
+                    var css = 'a:hover{ text-decoration: underline;color: blue }';
+                    var style = document.createElement('style');
+
+                    if (style.styleSheet) {
+                        style.styleSheet.cssText = css;
+                    } else {
+                        style.appendChild(document.createTextNode(css));
+                    }
+                   link.appendChild(style); 
+
                     saveList.appendChild(link);
                 }
                 if(files.length == 1) {
