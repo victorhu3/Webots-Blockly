@@ -1,4 +1,5 @@
 var cameraColour = '#AABBCC'
+//"DESCRIPTION: \nPARAMETERS: | \nRETURN: : ",
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	{
@@ -19,7 +20,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		"previousStatement": null,
 		"nextStatement": null,
 		"colour": cameraColour,
-		"tooltip": "",
+		"tooltip": "DESCRIPTION: Initializes camera sensor\nPARAMETERS: Camera variable | Camera name\nRETURN: None",
 		"helpUrl": ""
 	},
 	
@@ -51,7 +52,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		],
 		"output": null,
 		"colour": cameraColour,
-		"tooltip": "",
+		"tooltip": "DESCRIPTION: Returns list of all Recognition Objects in camera view\nPARAMETERS: Camera variable\nRETURN: List of Recognition Objects",
 		"helpUrl": ""
 	},
 	
@@ -66,7 +67,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		],
 		"output": null,
 		"colour": cameraColour,
-		"tooltip": "",
+		"tooltip": "DESCRIPTION: Returns Recognition Colors of a Recognition Object\nPARAMETERS: Recognition Object\nRETURN: 3-element list representing RGB values: Out of 255",
 		"helpUrl": ""
 	},
 	
@@ -81,7 +82,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		],
 		"output": null,
 		"colour": cameraColour,
-		"tooltip": "",
+		"tooltip": "DESCRIPTION: Returns position of a Recognition Object\nPARAMETERS: Recognition Object\nRETURN: 3-element list representing XYZ coordinates relative to robot: In meters",
 		"helpUrl": ""
 	}
 ]);

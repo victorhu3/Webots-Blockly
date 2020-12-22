@@ -1,6 +1,7 @@
 'use strict';
 
 var motorColor = 120
+//"DESCRIPTION: \nPARAMETERS: | \nRETURN: : ",
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 
@@ -22,7 +23,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		"previousStatement": null,
 		"nextStatement": null,
 		"colour": motorColor,
-		"tooltip": "",
+		"tooltip": "DESCRIPTION: Initializes motor\nPARAMETERS: Motor variable | Motor name\nRETURN: None",
 		"helpUrl": ""
 	},
 
@@ -43,7 +44,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		"previousStatement": null,
 		"nextStatement": null,
 		"colour": motorColor,
-		"tooltip": "",
+		"tooltip": "DESCRIPTION: Sets a motor to a certain speed\nPARAMETERS: Motor variable | Motor speed (-100 to +100)\nRETURN: None",
 		"helpUrl": ""
 	},
 
@@ -60,7 +61,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		"previousStatement": null,
 		"nextStatement": null,
 		"colour": motorColor,
-		"tooltip": "",
+		"tooltip": "DESCRIPTION: Resets the encoder count of a motor\nPARAMETERS: Motor variable\nRETURN: None",
 		"helpUrl": ""
 	},
 
@@ -76,7 +77,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		],
 		"output": null,
 		"colour": motorColor,
-		"tooltip": "",
+		"tooltip": "DESCRIPTION: Retrieves the encoder count of a motor\nPARAMETERS: Motor variable\nRETURN: Encoder count: In degrees",
 		"helpUrl": ""
 	}
 ]);

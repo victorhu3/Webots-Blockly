@@ -133,7 +133,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	"previousStatement": null,
 	"nextStatement": null,
 	"style": "list_blocks",
-	"tooltip": "",
+	"tooltip": "DESCRIPTION: Appends an element to the end of a list\nPARAMETERS: List to be appended to | Item to be appended\nRETURN: None",
 	"helpUrl": ""
   }
 ]);  // END JSON EXTRACT (Do not delete this comment.)
