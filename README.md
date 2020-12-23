@@ -1,12 +1,14 @@
-Webots-Blockly is an extension for the Webots simulation platform that allows for drag-and-drop programming.
+Webots-Blockly is an extension for the Webots simulation platform that allows for drag-and-drop programming. All documentation is in the "documentation" folder.
 
-![](documentation/img.png)
+![](documentation/img.PNG)
 
 Important links:
 
-Webots-Blockly Tutorial: ![](documentation/Webots_Blockly_Tutorial.pdf)
+Webots-Blockly Video Tutorials:
 
-Webots-Blockly Common Errors:
+Webots-Blockly Tutorial Document:
+
+Webots-Blockly Common Errors Document:
 
 Webots-Blockly Full API Documentation:
 
