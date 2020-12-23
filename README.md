@@ -6,7 +6,7 @@ Important links:
 
 Webots-Blockly Video Tutorials:
 
-Webots-Blockly Tutorial Document:
+[Webots-Blockly Tutorial Document](https://www.dropbox.com/s/xuvggjmfutswqcc/Webots_Blockly_Tutorial.pdf?dl=0)
 
 Webots-Blockly Common Errors Document:
 
