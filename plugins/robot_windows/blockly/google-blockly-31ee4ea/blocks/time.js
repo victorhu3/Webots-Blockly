@@ -1,4 +1,5 @@
 'use strict';
+//"DESCRIPTION: \nPARAMETERS: | \nRETURN: : ",
 
 var timeColor = 80
 
@@ -15,7 +16,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		"previousStatement": null,
 		"nextStatement": null,
 		"colour": timeColor,
-		"tooltip": "",
+		"tooltip": "DESCRIPTION: Suspends the program for a specified number of milliseconds\nPARAMETERS: Number of milliseconds to delay for\nRETURN: None",
 		"helpUrl": ""
 	},
 	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#9iwcmr
@@ -23,7 +24,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		"message0": "getTime",
 		"output": null,
 		"colour": timeColor,
-		"tooltip": "",
+		"tooltip": "DESCRIPTION: Returns number of milliseconds elapsed since last resetTime\nPARAMETERS: None\nRETURN: Time elapsed since last reset: In milliseconds",
 		"helpUrl": ""
 	},
 	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ch66ck
@@ -32,7 +33,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		"previousStatement": null,
 		"nextStatement": null,
 		"colour": timeColor,
-		"tooltip": "",
+		"tooltip": "DESCRIPTION: Resets internal clock that began when simulation was run\nPARAMETERS: None\nRETURN: None",
 		"helpUrl": ""
 	}
 ]);
