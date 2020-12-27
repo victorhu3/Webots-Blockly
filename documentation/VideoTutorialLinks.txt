@@ -1,0 +1,5 @@
+Webots-Blockly Video Tutorials:
+Playlist Link: https://youtube.com/playlist?list=PLSPNU4D3HphRyhQhvbi4zxSl9uwUDar37
+Webots-Blockly Installation Tutorial: https://youtu.be/bWE3aRRMNLY
+Webots-Blockly Programming Tutorial: https://youtu.be/T_C4VvBAhok
+Webots-Blockly Common Errors Video: https://youtu.be/4ckhuyM3qQ8
