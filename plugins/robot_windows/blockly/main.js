@@ -43,7 +43,7 @@ var currCommand = null; //stores the current command we are in the middle of pro
 
 if("WebSocket" in window) { //check if websockets are supported
     
-    var ws = new WebSocket("ws://localhost:8000/test.py");
+    var ws = new WebSocket("ws://localhost:8001/test.py");
     ws.onopen = function() {
 
         document.getElementById("submit").disabled = false;
