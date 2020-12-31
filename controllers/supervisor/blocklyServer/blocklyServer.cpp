@@ -25,7 +25,6 @@ using tcp = boost::asio::ip::tcp;
 #include <boost/filesystem.hpp>
 namespace filesystem = boost::filesystem;
 
-
 void write_py_file(const std::string& s){
     ofstream of("../my_controller/my_controller.py");
     of << s;
@@ -208,11 +207,11 @@ int main() {
   net::io_context ioc{ 1 };
     
   while(true) {
-    tcp::acceptor acceptor { ioc, {address, port}, false};
-    tcp::socket socket {ioc};
 
+    tcp::acceptor acceptor { ioc, {address, port}, true };
+    tcp::socket socket {ioc};
     acceptor.accept(socket);
-    
+      
     thread(&do_session, move(socket)).detach();
   }
 }

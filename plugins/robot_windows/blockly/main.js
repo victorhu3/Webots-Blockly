@@ -4,6 +4,29 @@ var saveList = document.getElementById("saveList");
 
 var title = document.getElementById("projectTitle");
 
+function openModal() {
+
+    currCommand = SocketCommand.LIST_SAVES;
+    ws.send(currCommand);
+
+    saveList.innerHTML = "";
+    var text = document.createElement("p");
+    text.innerHTML = "<b>Loading...</b>";
+    saveList.appendChild(text);
+
+}
+function closeModal() {
+    modal.style.display="none";
+}
+
+closeButton.onclick = closeModal;
+window.onclick = function(e) {
+
+    if(e.target == modal) {
+        closeModal();
+    }
+}
+
 const SocketCommand = {
     //kind of like an enum I guess
     SEND_CODE: "SEND_CODE",
@@ -18,26 +41,19 @@ const SocketCommand = {
 
 var currCommand = null; //stores the current command we are in the middle of processing 
 
-function sendMessage(messages) {
-
-    var ws = new WebSocket("ws://localhost:8001/test.py");
-
-    ws.onopen = function() {
+if("WebSocket" in window) { //check if websockets are supported
     
-        if(Array.isArray(messages)) {
-        
-           var i;
-           for(i = 0; i < messages.length; i++) {
+    var ws = new WebSocket("ws://localhost:8001/test.py");
+    ws.onopen = function() {
 
-                ws.send(messages[i]);
-           }
-        }
-        else {
+        document.getElementById("submit").disabled = false;
+        document.getElementById("save").disabled = false;
+        document.getElementById("restore").disabled = false;
 
-            ws.send(messages);
-        }
-    }
+        currCommand = SocketCommand.RESTORE_LAST_NAME;
+        ws.send(currCommand);
 
+    };
     ws.onmessage = function (evt) {
 
         var msg = evt.data;
@@ -80,8 +96,6 @@ function sendMessage(messages) {
                     text.innerHTML = "<b>No saved projects</b>";
                     saveList.appendChild(text);
                 }
-
-                ws.close();
             break;
             case SocketCommand.RESTORE_SAVE:
            
@@ -93,8 +107,6 @@ function sendMessage(messages) {
                     var xml = Blockly.Xml.textToDom(msg);
                     Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
                 }
-                
-                ws.close();
             break;
             case SocketCommand.RESTORE_LAST_NAME:
 
@@ -108,88 +120,21 @@ function sendMessage(messages) {
             break;
         }
     };
-    //ws.onclose = function () {
-     //   console.log("Connection Closed");
-    //}
-}
-
-if("WebSocket" in window) { //check if websockets are supported
-    
-    var ws = new WebSocket("ws://localhost:8001/test.py");
-    ws.onopen = function() {
-
-        document.getElementById("submit").disabled = false;
-        document.getElementById("save").disabled = false;
-        document.getElementById("restore").disabled = false;
-
-        currCommand = SocketCommand.RESTORE_LAST_NAME;
-        ws.send(currCommand);
-   
-    };
-    ws.onmessage = function (evt) {
-
-        var msg = evt.data;
-        
-        switch(currCommand) {
-
-            case SocketCommand.RESTORE_SAVE:
-           
-                //alert(msg);
-                Blockly.mainWorkspace.clear();
-                closeModal();
-
-                if(msg != "\0") { //If msg isn't empty
-                    var xml = Blockly.Xml.textToDom(msg);
-                    Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
-                }
-                
-                ws.close();
-            break;
-            case SocketCommand.RESTORE_LAST_NAME:
-
-                if(msg != "\0") {
-               
-                    title.textContent = msg;
-                    ws.send(SocketCommand.RESTORE_LAST);
-                    currCommand = SocketCommand.RESTORE_SAVE; //Restoring last save will use RESTORE_SAVE in the switch statement
-                }
-
-            break;
-        }
-    };
+    ws.onclose = function () {
+        console.log("Connection Closed");
+    }
 
 } else {
 
     alert("WebSocket is not supported");
 }
 
-function openModal() {
-
-    currCommand = SocketCommand.LIST_SAVES;
-    sendMessage(currCommand);
-
-    saveList.innerHTML = "";
-    var text = document.createElement("p");
-    text.innerHTML = "<b>Loading...</b>";
-    saveList.appendChild(text);
-
-}
-function closeModal() {
-    modal.style.display="none";
-}
-
-closeButton.onclick = closeModal;
-window.onclick = function(e) {
-
-    if(e.target == modal) {
-        closeModal();
-    }
-}
-
 function saveLast() {
 
     currCommand = SocketCommand.SAVE_LAST;
-    sendMessage([currCommand, title.textContent]);
+    ws.send(currCommand);
+
+    ws.send(title.textContent);
 }
 
 function convertCode() {
@@ -197,7 +142,8 @@ function convertCode() {
     currCommand = SocketCommand.SEND_CODE;
 
     var code = Blockly.Python.workspaceToCode(workspace);
-    sendMessage([SocketCommand.SEND_CODE, code]);
+    ws.send(SocketCommand.SEND_CODE);
+    ws.send(code);
 
     saveLast();
 }
@@ -211,7 +157,9 @@ function saveBlocks() {
     currCommand = SocketCommand.SAVE;
 
     var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
-    sendMessage([SocketCommand.SAVE, title.textContent+".xml", Blockly.Xml.domToText(xml)]);
+    ws.send(SocketCommand.SAVE);
+    ws.send(title.textContent+".xml");
+    ws.send(Blockly.Xml.domToText(xml));
     
     saveLast();
 }
@@ -219,8 +167,9 @@ function saveBlocks() {
 function restore() {
 
     currCommand = SocketCommand.RESTORE_SAVE;
-    sendMessage([currCommand, this.innerText+".xml"]);
+    ws.send(currCommand);
 
+   ws.send(this.innerText + ".xml");
    title.textContent = this.innerText;
 }
 
