@@ -94,7 +94,7 @@ do_session(tcp::socket socket)
                 string filePath = entry.path().string();
                 string fileName = filePath.substr(filePath.find_last_of("/\\") + 1); 
                 fileName.erase(fileName.size()-4, string::npos);
-                if(fileName[0] != '.') files += fileName + " ";
+                if(fileName[0] != '.') files += fileName + '\n';
              }
            
              ws.write(net::buffer(files));
