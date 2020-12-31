@@ -64,6 +64,15 @@
 ### VERBOSE = 1
 ###
 ###-----------------------------------------------------------------------------
+ifeq ($(OS),Windows_NT)     
+    detected_OS := Windows
+else
+    detected_OS := $(shell uname)  
+endif
+
+ifeq ($(detected_OS),Windows)
+	CFLAGS = -D WINDOWS
+endif
 
 space :=
 space +=
