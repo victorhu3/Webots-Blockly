@@ -186,7 +186,7 @@ do_session(tcp::socket socket)
         //ws.text(ws.got_text());
         //ws.write(buffer.data());
         //buffer.clear();
-        //ws.close(websocket::close_reason("normal close"));
+        ws.close(websocket::close_reason("normal close"));
     }
     catch (beast::system_error const& se)
     {
