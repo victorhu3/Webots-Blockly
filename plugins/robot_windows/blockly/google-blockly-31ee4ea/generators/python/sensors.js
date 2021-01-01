@@ -1,12 +1,12 @@
 Blockly.Python['sensors_initializegyro'] = function(block) {
   var text_sensortag = block.getFieldValue('sensorTag');
-  var code = 'gyroEnable = True\ngyro = myRobot.getGyro(\'' + text_sensortag + '\')\ngyro.enable(timeStep)\n';
+  var code = 'gyroEnable = True\ngyro = myRobot.getDevice(\'' + text_sensortag + '\')\ngyro.enable(timeStep)\n';
   return code;
 };
 
 Blockly.Python['sensors_initializegps'] = function(block) {
   var text_sensortag = block.getFieldValue('sensorTag');
-  var code = 'gps = myRobot.getGPS(\'' + text_sensortag + '\')\ngps.enable(timeStep)\n';
+  var code = 'gps = myRobot.getDevice(\'' + text_sensortag + '\')\ngps.enable(timeStep)\n';
   return code;
 };
 
@@ -15,15 +15,7 @@ Blockly.Python['sensors_initializesensor'] = function(block) {//when multiple of
   var text_sensortag = block.getFieldValue('sensorTag');
   var variable_sensorname = Blockly.Python.variableDB_.getName(block.getFieldValue('sensorName'), Blockly.Variables.NAME_TYPE);
   var code = '';
-  code += variable_sensorname + ' = myRobot.get';
-  switch(dropdown_sensortype) {
-    case 'lightSensor':
-      code += 'Camera';
-      break;
-    case 'distanceSensor':
-      code += 'DistanceSensor';
-      break;
-  }
+  code += variable_sensorname + ' = myRobot.getDevice';
   code += '(\'' + text_sensortag + '\')\n' + variable_sensorname + '.enable(timeStep) \n';
   return code;
 };

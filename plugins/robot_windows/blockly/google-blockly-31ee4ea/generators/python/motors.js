@@ -2,7 +2,7 @@ Blockly.Python['motors_setupmotor'] = function(block) {
   var variable_motorObj = Blockly.Python.variableDB_.getName(block.getFieldValue('motorObj'), Blockly.Variables.NAME_TYPE);
   var text_motorName = block.getFieldValue('motorName');
   // TODO: Assemble Python into code variable.
-  var code = variable_motorObj + ' = myRobot.getMotor(\"' + text_motorName + '\")\n' + 
+  var code = variable_motorObj + ' = myRobot.getDevice(\"' + text_motorName + '\")\n' + 
              'encObj[' + variable_motorObj + '] = ' + variable_motorObj + '.getPositionSensor()\n' +
              variable_motorObj + '.setPosition(float(\"inf\"))\n' +
              variable_motorObj + '.setVelocity(0)\n' +

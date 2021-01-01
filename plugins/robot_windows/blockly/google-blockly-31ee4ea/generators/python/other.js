@@ -43,7 +43,8 @@ Blockly.Python['other_start'] = function(block) {
           'lastTimeReset = 0\n' +
           'gyroEnable = False\n' +
           'encCount = {}\n' +
-          'lastEncReset = {}\n\n';
+          'lastEncReset = {}\n' +
+					'myRobot.step(timeStep)\n\n';
   return code;
 };
 
