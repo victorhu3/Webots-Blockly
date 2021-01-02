@@ -50,6 +50,29 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "tooltip": "%{BKY_MATH_NUMBER_TOOLTIP}",
     "extensions": ["parent_tooltip_when_inline"]
   },
+  
+  {
+  "type": "math_round2",
+  "message0": "round %1 to %2 %3 decimal places",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "INPUTTEXT"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "NAME"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": mathColor,
+  "tooltip": "",
+  "helpUrl": ""
+  },
 
   // Block for basic arithmetic operator.
   {

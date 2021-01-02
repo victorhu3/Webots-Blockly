@@ -35,7 +35,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for text value
   {
     "type": "text",
-    "message0": "%1",
+    "message0": "\" %1 \"",
     "args0": [{
       "type": "field_input",
       "name": "TEXT",
@@ -44,12 +44,55 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "output": "String",
     "colour": otherColor,
     "helpUrl": "%{BKY_TEXT_TEXT_HELPURL}",
-    "tooltip": "%{BKY_TEXT_TEXT_TOOLTIP}",
-    "extensions": [
-      "text_quotes",
-      "parent_tooltip_when_inline"
-    ]
+    "tooltip": "Note: use \n for a new line",
+    //"extensions": [
+    // "text_quotes",
+    //  "parent_tooltip_when_inline"
+    //]
   },
+  {//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vi4jwk
+    "type": "concattext",
+    "message0": "\" %1 \" +  %2",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "TEXT",
+        "text": ""
+      },
+      {
+        "type": "input_value",
+        "name": "INPUTTEXT",
+        "check": "String"
+      }
+    ],
+    "inputsInline": false,
+    "output": null,
+    "colour": otherColor,
+    "tooltip": "Note: use \n for a new line",
+    "helpUrl": ""
+  },
+    {//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#79ub38
+	  "type": "concattext2",
+	  "message0": "%1 + %2 %3",
+	  "args0": [
+		{
+		  "type": "input_value",
+		  "name": "INPUTTEXT"
+		},
+		{
+		  "type": "input_dummy"
+		},
+		{
+		  "type": "input_value",
+		  "name": "NAME"
+		}
+	  ],
+	  "inputsInline": true,
+	  "output": null,
+	  "colour": otherColor,
+	  "tooltip": "",
+	  "helpUrl": ""
+	},
   {
     "type": "text_multiline",
     "message0": "%1 %2",

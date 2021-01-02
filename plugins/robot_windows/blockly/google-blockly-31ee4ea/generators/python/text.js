@@ -21,6 +21,21 @@ Blockly.Python['text'] = function(block) {
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python['concattext'] = function(block) {
+  // Text value.
+  var text_text = block.getFieldValue('TEXT');
+  var value_inputtext = Blockly.Python.valueToCode(block, 'INPUTTEXT', Blockly.Python.ORDER_ATOMIC);
+  var code = "\"" + text_text + "\" + str(" + value_inputtext + ")";
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python['concattext2'] = function(block) {
+  var value_inputtext = Blockly.Python.valueToCode(block, 'INPUTTEXT', Blockly.Python.ORDER_ATOMIC);
+  var value_name = Blockly.Python.valueToCode(block, 'NAME', Blockly.Python.ORDER_ATOMIC);
+  var code = "str(" + value_inputtext + ") + str(" + value_name + ")";
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
 Blockly.Python['text_multiline'] = function(block) {
   // Text value.
   var code = Blockly.Python.multiline_quote_(block.getFieldValue('TEXT'));

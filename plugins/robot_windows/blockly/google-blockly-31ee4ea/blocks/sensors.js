@@ -44,8 +44,8 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	      "name": "sensorType",
 	      "options": [
 	        [
-	          "lightSensor",
-	          "lightSensor"
+	          "colorSensor",
+	          "colorSensor"
 	        ],
 	        [
 	          "distanceSensor",

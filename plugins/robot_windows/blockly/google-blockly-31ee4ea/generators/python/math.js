@@ -35,6 +35,14 @@ Blockly.Python['math_number'] = function(block) {
   return [code, order];
 };
 
+Blockly.Python['math_round2'] = function(block) {
+  var value_inputtext = Blockly.Python.valueToCode(block, 'INPUTTEXT', Blockly.Python.ORDER_ATOMIC);
+  var value_name = Blockly.Python.valueToCode(block, 'NAME', Blockly.Python.ORDER_ATOMIC);
+  var code = 'round(' + value_inputtext + ',' + value_name + ')';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
 Blockly.Python['math_arithmetic'] = function(block) {
   // Basic arithmetic operators, and power.
   var OPERATORS = {

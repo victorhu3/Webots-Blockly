@@ -1,7 +1,5 @@
-lm = None
-rm = None
-ls = None
-savedAngle = None
+color = None
+distSensor = None
 
 
 from controller import Robot
@@ -64,58 +62,21 @@ encCount = {}
 lastEncReset = {}
 myRobot.step(timeStep)
 
-lm = myRobot.getDevice("left wheel")
-encObj[lm] = lm.getPositionSensor()
-lm.setPosition(float("inf"))
-lm.setVelocity(0)
-encObj[lm].enable(timeStep)
-encCount[lm] = 0
-lastEncReset[encObj[lm]] = 0
-
-rm = myRobot.getDevice("right wheel")
-encObj[rm] = rm.getPositionSensor()
-rm.setPosition(float("inf"))
-rm.setVelocity(0)
-encObj[rm].enable(timeStep)
-encCount[rm] = 0
-lastEncReset[encObj[rm]] = 0
-
-ls = myRobot.getDevice('light sensor')
-ls.enable(timeStep)
 gyroEnable = True
 gyro = myRobot.getDevice('gyro')
 gyro.enable(timeStep)
-for count in range(4):
-  lm.setVelocity((30 / 100.0) * lm.getMaxVelocity())
-  rm.setVelocity((30 / 100.0) * rm.getMaxVelocity())
-  initTime = myRobot.getTime()
-  while myRobot.step(timeStep) != -1:
-    if (myRobot.getTime() - initTime) * 1000.0 > 2000:
-      break
-  while myRobot.step(timeStep) != -1 and (getLSGray(ls.getImageArray())) > 15:
-    if gyroEnable:
-      updateGyro()
-    print(getLSColor(ls.getImageArray()))
-  initTime = myRobot.getTime()
-  while myRobot.step(timeStep) != -1:
-    if (myRobot.getTime() - initTime) * 1000.0 > 1000:
-      break
-  lm.setVelocity((0 / 100.0) * lm.getMaxVelocity())
-  rm.setVelocity((0 / 100.0) * rm.getMaxVelocity())
-  initTime = myRobot.getTime()
-  while myRobot.step(timeStep) != -1:
-    if (myRobot.getTime() - initTime) * 1000.0 > 500:
-      break
-  lm.setVelocity((30 / 100.0) * lm.getMaxVelocity())
-  rm.setVelocity(((-30) / 100.0) * rm.getMaxVelocity())
-  savedAngle = getAngle()
-  while myRobot.step(timeStep) != -1 and (((savedAngle - (getAngle())) % 360)) < 85:
-    if gyroEnable:
-      updateGyro()
-    pass
-  lm.setVelocity((0 / 100.0) * lm.getMaxVelocity())
-  rm.setVelocity((0 / 100.0) * rm.getMaxVelocity())
-  initTime = myRobot.getTime()
-  while myRobot.step(timeStep) != -1:
-    if (myRobot.getTime() - initTime) * 1000.0 > 500:
-      break
+gps = myRobot.getDevice('gps')
+gps.enable(timeStep)
+color = myRobot.getDevice('color sensor')
+color.enable(timeStep)
+distSensor = myRobot.getDevice('distance sensor')
+distSensor.enable(timeStep)
+while myRobot.step(timeStep) != -1 and 1:
+  if gyroEnable:
+    updateGyro()
+  print("Gyro:" + str((str((round((getAngle()),3))) + str(' degrees'))))
+  print("GPS:" + str((str("x " + str((round(((gps.getValues())[-1 + 1]),3)))) + str((str("; y " + str((round(((gps.getValues())[0 + 1]),3)))) + str("; z " + str((round(((gps.getValues())[1 + 1]),3)))))))))
+  print("getDist: " + str((str((round((distSensor.getValue()),3))) + str(' cm'))))
+  print("getColor: " + str((str("red " + str((round(((getLSColor(color.getImageArray()))[-1 + 1]),3)))) + str((str("; green " + str((round(((getLSColor(color.getImageArray()))[0 + 1]),3)))) + str("; blue " + str((round(((getLSColor(color.getImageArray()))[1 + 1]),3)))))))))
+
+gps.getValues()
