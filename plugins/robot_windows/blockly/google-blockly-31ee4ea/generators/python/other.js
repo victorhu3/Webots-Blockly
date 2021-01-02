@@ -1,10 +1,29 @@
 Blockly.Python['other_start'] = function(block) {
   var code = 'from controller import Robot\n';
   code += 'from controller import GPS\n' + 'from controller import LightSensor\n' + 'from controller import Motor\n' + 'from controller import PositionSensor\n' +
-          'from controller import Gyro\n\n';
+          'from controller import Gyro\n\n' + 'kernel_size = 10\n' + 'internal_angle = 0.0\n\n'
+  //extra functions for color sensor
+  code += 'def getLSColor(camImg):\n' +
+			' global kernel_size\n' +
+			' rgb = [0] * 3\n' +
+			' for x in range(0,kernel_size):\n' +
+			'  for y in range(0,kernel_size):\n' +
+			'   for i in range(0,3):\n' +
+			'    rgb[i] += camImg[x][y][i]\n' +
+			' for i in range(0,3):\n' +
+			'  rgb[i] = int(rgb[i]/(kernel_size*kernel_size))\n' +
+			' return rgb\n' +
+			'def getLSGray(camImg):\n' +
+			' global kernel_size\n' +
+			' gray = 0\n' +
+			' for x in range(0,kernel_size):\n' +
+			'  for y in range(0,kernel_size):\n' +
+			'   for i in range(0,3):\n' +
+			'    gray += camImg[x][y][i]\n' +
+			' gray = int(gray/(3*kernel_size*kernel_size))\n' +
+			' return gray\n\n'
   //extra functions for gyro
-  code += 'internal_angle = 0.0\n\n' +
-          '#updates angle variable according to angular velocity from gyro\n' +
+  code += '#updates angle variable according to angular velocity from gyro\n' +
           '#angleCurrent = anglePast + integral of angular velocity over one timeStep since last updated angle\n' +
           '#should be called every time main loop repeats\n' +
           'def updateGyro():\n' +

@@ -102,8 +102,8 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  "helpUrl": ""
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#7wopkw
-	  "type": "sensors_getlightvals",
-	  "message0": "getLight %1",
+	  "type": "sensors_getcolor",
+	  "message0": "getColor %1",
 	  "args0": [
 	    {
 	      "type": "field_variable",
@@ -113,7 +113,22 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  ],
 	  "output": null,
 	  "colour": sensorColor,
-	  "tooltip": "returns brightness represented by a real number between 0 and 1000",
+	  "tooltip": "Paramaeters: color sensor variable \n Output: returns array of size 3 with rgb values represented by integer between 0 and 255",
+	  "helpUrl": ""
+	},
+	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#7wopkw
+	  "type": "sensors_getgray",
+	  "message0": "getGray %1",
+	  "args0": [
+	    {
+	      "type": "field_variable",
+	      "name": "sensorName",
+	      "variable": "sensor1"
+	    }
+	  ],
+	  "output": null,
+	  "colour": sensorColor,
+	  "tooltip": "Paramaeters: color sensor variable \n Output: returns grayscale value represented by integer between 0 and 255",
 	  "helpUrl": ""
 	}
 ]);
