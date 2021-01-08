@@ -16,7 +16,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  "previousStatement": null,
 	  "nextStatement": null,
 	  "colour": sensorColor,
-	  "tooltip": "Enter sensor tag",
+	  "tooltip": "DESCRIPTION: Initializes gyro  \nPARAMETERS: Sensor tag  \nRETURN: None",
 	  "helpUrl": ""
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#of94vp
@@ -32,7 +32,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  "previousStatement": null,
 	  "nextStatement": null,
 	  "colour": sensorColor,
-	  "tooltip": "Enter sensor tag",
+	  "tooltip": "DESCRIPTION: Initializes GPS  \nPARAMETERS: Sensor tag  \nRETURN: None",
 	  "helpUrl": ""
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#ezrcan
@@ -67,7 +67,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  "previousStatement": null,
 	  "nextStatement": null,
 	  "colour": sensorColor,
-	  "tooltip": "Choose sensor type; enter sensor tag; create a variable for this sensor",
+	  "tooltip": "DESCRIPTION: Initializes distance or color sensor  \nPARAMETERS: Sensor type | Sensor tag | Sensor variable  \nRETURN: None",
 	  "helpUrl": ""
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#frv8ow
@@ -75,7 +75,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  "message0": "getGPSVals",
 	  "output": null,
 	  "colour": sensorColor,
-	  "tooltip": "returns a list w/ x-val, y-val, z-val",
+	  "tooltip": "DESCRIPTION: Returns GPS-based location of robot as a list \nPARAMETERS: None  \nRETURN: List w/ x-val, y-val, z-val",
 	  "helpUrl": ""
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#2fp54a
@@ -83,7 +83,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  "message0": "getGyroVals",
 	  "output": null,
 	  "colour": sensorColor,
-	  "tooltip": "returns angle",
+	  "tooltip": "DESCRIPTION: Returns current angle of robot relative to its starting angle \nPARAMETERS: None  \nRETURN: Angle in degrees (angle can exceed 360 degrees if the robot made more than one full rotation)",
 	  "helpUrl": ""
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#s4uci3
@@ -98,7 +98,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  ],
 	  "output": null,
 	  "colour": sensorColor,
-	  "tooltip": "returns distance in cm",
+	  "tooltip": "DESCRIPTION: Returns distance based on the inputed distance sensor \nPARAMETERS: Distance sensor variable  \nRETURN: distance in cm",
 	  "helpUrl": ""
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#7wopkw
@@ -113,7 +113,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  ],
 	  "output": null,
 	  "colour": sensorColor,
-	  "tooltip": "Paramaeters: color sensor variable \n Output: returns array of size 3 with rgb values represented by integer between 0 and 255",
+	  "tooltip": "DESCRIPTION: Returns red, green, blue values based on the inputed color sensor \nPARAMETERS: Color sensor variable  \nRETURN: List w/ red, green, and blue values where each value in the list is an integer between 0 and 255",
 	  "helpUrl": ""
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#7wopkw
@@ -128,7 +128,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	  ],
 	  "output": null,
 	  "colour": sensorColor,
-	  "tooltip": "Paramaeters: color sensor variable \n Output: returns grayscale value represented by integer between 0 and 255",
+	  "tooltip": "DESCRIPTION: Returns brightness based on the inputed color sensor \nPARAMETERS: Color sensor variable  \nRETURN: brightness as an integer value between 0 and 255",
 	  "helpUrl": ""
 	}
 ]);

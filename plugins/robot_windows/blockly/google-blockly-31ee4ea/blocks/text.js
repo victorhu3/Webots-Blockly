@@ -73,7 +73,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   },
     {//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#79ub38
 	  "type": "concattext2",
-	  "message0": "%1 + %2 %3",
+	  "message0": "\"%1\" + %2 \"%3\"",
 	  "args0": [
 		{
 		  "type": "input_value",
