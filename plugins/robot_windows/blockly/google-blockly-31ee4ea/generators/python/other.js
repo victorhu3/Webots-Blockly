@@ -1,7 +1,7 @@
 Blockly.Python['other_start'] = function(block) {
   var code = 'from controller import Robot\n';
   code += 'from controller import GPS\n' + 'from controller import LightSensor\n' + 'from controller import Motor\n' + 'from controller import PositionSensor\n' +
-          'from controller import Gyro\n\n' + 'kernel_size = 10\n' + 'internal_angle = 0.0\n\n'
+          'from controller import Gyro\n' + 'import math\n\n' + 'kernel_size = 10\n' + 'internal_angle = 0.0\n\n'
   //extra functions for color sensor
   code += 'def getLSColor(camImg):\n' +
 			' global kernel_size\n' +
@@ -56,6 +56,9 @@ Blockly.Python['other_start'] = function(block) {
           '  if encCount[posSensor] != encCount[posSensor]:\n' +
           '    encCount[posSensor] = 0\n' +
           '  return False\n\n' +
+					'def getObjAng(coord):\n' +
+					'    ang = math.degrees(math.atan(coord[0]/math.fabs(coord[2])))\n' +
+					'    return ang\n\n' +
           'myRobot = Robot()\n' +
           'timeStep = 32\n' +
           'encObj = {}\n' +

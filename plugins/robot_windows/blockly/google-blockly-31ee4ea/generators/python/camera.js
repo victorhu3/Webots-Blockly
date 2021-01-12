@@ -38,3 +38,29 @@ Blockly.Python['camera_getobjpos'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
+
+Blockly.Python['camera_getobjang'] = function(block) {
+  var value_obj = Blockly.Python.valueToCode(block, 'obj', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = 'getObjAng(' + value_obj + '.get_position())';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+/*
+Solid {
+  translation -1.26 0 0
+  scale 3 3 3
+  children [
+    Shape {
+      geometry Cone {
+        bottomRadius 0.05
+        height 0.1
+      }
+    }
+  ]
+  recognitionColors [
+    0 0 0
+  ]
+}
+*/

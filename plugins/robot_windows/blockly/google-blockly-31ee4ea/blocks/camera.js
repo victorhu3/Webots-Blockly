@@ -82,7 +82,21 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		],
 		"output": null,
 		"colour": cameraColour,
-		"tooltip": "DESCRIPTION: Returns position of a Recognition Object\nPARAMETERS: Recognition Object\nRETURN: 3-element list representing XYZ coordinates relative to robot: In meters",
+		"tooltip": "DESCRIPTION: Returns position of a Recognition Object\nPARAMETERS: Recognition Object\nRETURN: 3-element list representing XYZ coordinates relative to robot's forward line of vision: In meters",
+		"helpUrl": ""
+	},
+	{
+		"type": "camera_getobjang",
+		"message0": "getAngleToObj %1",
+		"args0": [
+			{
+				"type": "input_value",
+				"name": "obj"
+			}
+		],
+		"output": null,
+		"colour": cameraColour,
+		"tooltip": "DESCRIPTION: Returns angle offset of a Recognition Object\nPARAMETERS: Recognition Object\nRETURN: Angle relative to robot's forward line of vision: -90 to 90 degrees",
 		"helpUrl": ""
 	}
 ]);
