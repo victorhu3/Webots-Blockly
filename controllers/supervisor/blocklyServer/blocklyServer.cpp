@@ -7,7 +7,7 @@
 using namespace std;
 
 // put in ifdef for WIN32
-#define _WIN32_WINNT _WIN32_WINNT_WIN10         
+#define _WIN32_WINNT _WIN32_WINNT_WIN10
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 
 #include <boost/beast/core.hpp>
@@ -16,10 +16,10 @@ using namespace std;
 #include <boost/beast/core/buffers_to_string.hpp>
 
 namespace beast = boost::beast;
-namespace http = beast::http;           
-namespace websocket = beast::websocket; 
-namespace net = boost::asio;            
-using tcp = boost::asio::ip::tcp;      
+namespace http = beast::http;
+namespace websocket = beast::websocket;
+namespace net = boost::asio;
+using tcp = boost::asio::ip::tcp;
 
 #include <boost/range/iterator_range.hpp>
 #include <boost/filesystem.hpp>
@@ -60,22 +60,22 @@ do_session(tcp::socket socket)
         // This buffer will hold the incoming message
         beast::flat_buffer buffer;
         // Read a message
-        
+
         while(true) {
-        
+
           ws.read(buffer);
           auto p = buffer.cdata();
           auto s = beast::buffers_to_string(buffer.data());
-      
+
           buffer.clear();
-      
+
            if(s == "SEND_CODE") {
-           
+
              ws.read(buffer);
              write_py_file(beast::buffers_to_string(buffer.data()));
            }
            else if(s == "SAVE") {
-           
+
              ws.read(buffer);
              auto fileName = beast::buffers_to_string(buffer.data());
              buffer.clear();
@@ -92,11 +92,11 @@ do_session(tcp::socket socket)
              for(auto& entry : boost::make_iterator_range(filesystem::directory_iterator(p), {} )) {
 
                 string filePath = entry.path().string();
-                string fileName = filePath.substr(filePath.find_last_of("/\\") + 1); 
+                string fileName = filePath.substr(filePath.find_last_of("/\\") + 1);
                 fileName.erase(fileName.size()-4, string::npos);
                 if(fileName[0] != '.') files += fileName + '\n';
              }
-           
+
              ws.write(net::buffer(files));
            }
            else if(s == "RESTORE_SAVE") {
@@ -104,9 +104,9 @@ do_session(tcp::socket socket)
              ws.read(buffer);
              auto fileName = beast::buffers_to_string(buffer.data());
              buffer.clear();
-             
+
              string filePath = "../Blockly_Programs/" + fileName;
-             
+
              ifstream in(filePath, ios::binary | ios::ate);
              streamsize size = in.tellg();
              in.seekg(0, ios::beg);
@@ -120,10 +120,10 @@ do_session(tcp::socket socket)
            }
            else if(s == "RESTORE_LAST_NAME") {
 
-            
+
              ifstream in("../Blockly_Programs/.tmp.txt");
              if(!in.fail()) {
-               
+
                string fileName;
                in >> fileName;
                in.close();
@@ -138,14 +138,14 @@ do_session(tcp::socket socket)
 
              ifstream in("../Blockly_Programs/.tmp.txt");
              if(!in.fail()) {
-               
+
                string fileName;
                in >> fileName;
                in.close();
 
                 fileName += ".xml";
                  string filePath = "../Blockly_Programs/" + fileName;
-                 
+
                  ifstream in(filePath, ios::binary | ios::ate);
 
                  if(!in.fail()) { //Make this into a function already >:(
@@ -162,12 +162,12 @@ do_session(tcp::socket socket)
 
                  }
                  else { //If file is not found, return empty
-                   ws.write(net::buffer("")); 
+                   ws.write(net::buffer(""));
                  }
              }
              else { //If the tmp file isn't found, return empty
 
-                   ws.write(net::buffer("")); 
+                   ws.write(net::buffer(""));
              }
            }
            else if(s == "SAVE_LAST") {
@@ -175,7 +175,7 @@ do_session(tcp::socket socket)
              ws.read(buffer);
 
              auto fileName = beast::buffers_to_string(buffer.data());
-          
+
              saveToFile(".tmp.txt", fileName );
            }
 
@@ -205,17 +205,17 @@ int main() {
   auto const address = net::ip::make_address("127.0.0.1");
   unsigned short port = 8001;
   net::io_context ioc{ 1 };
-    
+
   while(true) {
     //Set reuse address to false to prevent multiple instances of blocklyServer on Windows
 #ifdef WINDOWS
     tcp::acceptor acceptor { ioc, {address, port}, false };
-#elif
+#else
     tcp::acceptor acceptor { ioc, {address, port}, true };
 #endif
     tcp::socket socket {ioc};
     acceptor.accept(socket);
-      
+
     thread(&do_session, move(socket)).detach();
   }
 }

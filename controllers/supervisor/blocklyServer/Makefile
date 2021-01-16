@@ -9,9 +9,11 @@ ifeq ($(detected_OS),Windows)
 	INCLUDE=-I"C:\Users\Victor\Downloads\boost_1_74_0\boost_1_74_0"
 	FLAGS=-DWINDOWS
 else ifeq ($(detected_OS),Darwin)        # Mac OS X
-
+	LIBRARIES=-lboost_date_time -lboost_filesystem
+	FLAGS=-std=c++11
 else
-	LIBRARIES=-L. -lboost_date_time -lboost_filesystem -lpthread
+	LIBRARIES=-lboost_date_time -lboost_filesystem
+	FLAGS=-std=c++11
 endif
 
 blocklyServer: blocklyServer.cpp
