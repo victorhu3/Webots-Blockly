@@ -1,4 +1,4 @@
-Webots-Blockly is an extension for the Webots simulation platform that allows for drag-and-drop programming. All documentation is in the "documentation" folder.
+Webots-Blockly is an extension for the Webots simulation platform that allows for drag-and-drop programming using Google's Blockly library. All documentation is in the "documentation" folder.
 
 ![](documentation/img.PNG)
 
@@ -16,3 +16,4 @@ Webots-Blockly [Video Tutorials](https://youtube.com/playlist?list=PLSPNU4D3HphR
 [Webots-Blockly Website](https://dev.stormingrobots.com)
 
 [Webots Website](https://cyberbotics.com/)
+[Google Blockly](https://github.com/google/blockly)
