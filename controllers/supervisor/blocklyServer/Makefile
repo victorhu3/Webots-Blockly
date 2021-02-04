@@ -1,7 +1,7 @@
 ifeq ($(OS),Windows_NT)     
     detected_OS := Windows
 else
-    detected_OS := $(shell uname)  
+    detected_OS := $(shell uname)
 endif
 
 ifeq ($(detected_OS),Windows)
@@ -9,7 +9,8 @@ ifeq ($(detected_OS),Windows)
 	INCLUDE=-I"C:\Users\Victor\Downloads\boost_1_74_0\boost_1_74_0"
 	FLAGS=-DWINDOWS
 else ifeq ($(detected_OS),Darwin)        # Mac OS X
-
+	LIBRARIES=-lboost_date_time -lboost_filesystem
+	FLAGS=-std=c++11
 else
 	LIBRARIES=-L. -lboost_date_time -lboost_filesystem -lpthread
 endif

@@ -67,7 +67,7 @@
 ifeq ($(OS),Windows_NT)     
     detected_OS := Windows
 else
-    detected_OS := $(shell uname)  
+    detected_OS := $(shell uname) 
 endif
 
 ifeq ($(detected_OS),Windows)
